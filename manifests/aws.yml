@@ -1,0 +1,45 @@
+name: sentimentr-deployment
+
+director_uuid: c0f671ed-1ae1-4c23-97c9-c03985f390bb
+
+releases:
+- {name: sentimentr-release, version: latest}
+
+resource_pools:
+- name: small
+  network: default
+  stemcell:
+    name: bosh-aws-xen-hvm-ubuntu-trusty-go_agent
+    version: latest
+  cloud_properties:
+    instance_type: m3.medium
+    availability_zone: us-east-1a
+
+networks:
+- name: default
+  type: dynamic
+  cloud_properties:
+    subnet: subnet-ba9be9cd
+
+compilation:
+  workers: 1
+  network: default
+  reuse_compilation_vms: true
+  cloud_properties:
+    instance_type: m3.medium
+    availability_zone: us-east-1a
+
+update:
+  canaries: 1
+  max_in_flight: 10
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+jobs:
+- name: sentimentr
+  instances: 1
+  templates:
+  - {name: sentimentr, release: sentimentr-release}
+  resource_pool: small
+  networks:
+  - name: default

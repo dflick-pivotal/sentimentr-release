@@ -1,0 +1,7 @@
+---
+name: sentimentr
+
+dependencies:
+
+files: 
+- sentimentr/**/*

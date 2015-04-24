@@ -1,0 +1,5 @@
+check process sentimentr
+  with pidfile /var/vcap/sys/run/sentimentr/pid
+  start program "/var/vcap/jobs/sentimentr/bin/sentimentr_ctl start"
+  stop program "/var/vcap/jobs/sentimentr/bin/sentimentr_ctl stop"
+  group vcap

@@ -1,0 +1,8 @@
+---
+name: sentimentr
+templates:
+  sentimentr_ctl.erb: bin/sentimentr_ctl
+
+packages: 
+- java
+- sentimentr
