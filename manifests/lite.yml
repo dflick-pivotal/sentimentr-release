@@ -1,0 +1,43 @@
+name: sentimentr-deployment
+
+director_uuid: 4796378f-cc91-4d93-a1b0-75a9af101708
+
+releases:
+- {name: sentimentr-release, version: latest}
+
+resource_pools:
+- name: small
+  network: default
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+  cloud_properties:
+    name: random
+
+networks:
+- name: default
+  type: dynamic
+  cloud_properties:
+    subnet: subnet-ba9be9cd
+
+compilation:
+  workers: 1
+  network: default
+  reuse_compilation_vms: true
+  cloud_properties:
+    name: random
+
+update:
+  canaries: 1
+  max_in_flight: 10
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+jobs:
+- name: sentimentr
+  instances: 1
+  templates:
+  - {name: sentimentr, release: sentimentr-release}
+  resource_pool: small
+  networks:
+  - name: default
