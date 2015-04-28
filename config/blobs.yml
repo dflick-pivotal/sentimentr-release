@@ -1,1 +1,9 @@
---- {}
+---
+java/jdk-8u45-linux-x64.gz:
+  object_id: bc126802-29de-4efd-a4ad-105157662e07
+  sha: 75e2fff2ed161c7de293c4408be8da8f2282b07b
+  size: 173271626
+mvn/apache-maven-3.3.1-bin.tar.gz:
+  object_id: 3f5068ea-d0b9-475e-9323-d250ecacb24b
+  sha: a98e56056d17b415a3b13d113199bf5f8121489b
+  size: 8059952
