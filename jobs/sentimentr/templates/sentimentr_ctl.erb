@@ -9,12 +9,12 @@ case $1 in
   start)
     mkdir -p $RUN_DIR $LOG_DIR
     chown -R vcap:vcap $RUN_DIR $LOG_DIR
-
+    rm $PIDFILE
     echo $$ >> $PIDFILE
 
     cd /var/vcap/packages/sentimentr
 
-    export PATH=/var/vcap/packages/java/jre1.8.0_45/bin:$PATH
+    export PATH=/var/vcap/packages/java/bin:$PATH
 
     exec chpst -u vcap:vcap java -jar sentimentr.jar \
       >>  $LOG_DIR/sentimentr.stdout.log \
@@ -24,7 +24,7 @@ case $1 in
 
   stop)
 
-    kill `cat $PIDFILE`
+    kill -9 `cat $PIDFILE`
 
     rm -f $PIDFILE
 

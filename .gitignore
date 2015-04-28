@@ -13,4 +13,5 @@ blobs
 *~
 *#
 #*
+src/sentimentr-service/target/*
 latest.tgz

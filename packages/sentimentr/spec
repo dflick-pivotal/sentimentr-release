@@ -1,7 +1,7 @@
 ---
 name: sentimentr
 
-dependencies:
-
-files: 
-- sentimentr/**/*
+files:
+- java/*
+- mvn/*
+- sentimentr-service/**/*

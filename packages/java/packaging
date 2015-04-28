@@ -1,5 +1,11 @@
-# abort script on any command that exits with a non zero value
+## JDK 8 packaging script
 
-set -e -x
+# abort script on any command that exit with a non zero value
+set -e
 
-tar xf java/jre-8u45-linux-x64.tar -C ${BOSH_INSTALL_TARGET}
+JAVA_VERSION=jdk1.8.0_45
+JAVA_TAR_BALL=jdk-8u45-linux-x64.gz
+
+tar zxvf ${BOSH_COMPILE_TARGET}/java/${JAVA_TAR_BALL}
+
+mv ${JAVA_VERSION}/* ${BOSH_INSTALL_TARGET}/
