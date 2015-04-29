@@ -10,4 +10,4 @@ clone the repo and execute ./gradlew assemble. This will add the dependency to y
 Clone this repo and execute ./gradlew assemble
 
 # Run Service Broker
-java -jar build/libs/spring-boot-cf-service-broker-sentimentr.war --sentimentrServiceIP=<ip>
+java -jar build/libs/spring-boot-cf-service-broker-sentimentr.war --sentimentrServiceIP=ip
