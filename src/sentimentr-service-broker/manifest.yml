@@ -1,0 +1,6 @@
+---
+applications:
+- name: mongo-broker
+  memory: 512M
+  instances: 1
+  path: build/libs/sentimentr-service-broker.war

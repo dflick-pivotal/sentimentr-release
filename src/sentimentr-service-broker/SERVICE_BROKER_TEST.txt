@@ -1,0 +1,99 @@
+# Service Broker Test
+
+# Build Service Broker
+./gradlew assemble
+
+# Start Service Broker
+java -jar build/libs/spring-boot-cf-service-broker-sentimentr.war
+
+
+Get Catalog
+===========
+
+curl -H "X-Broker-API-Version: 2.4" http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/catalog
+
+==>
+{
+"services":[
+{
+"planUpdatable":false,
+"id":"sentimentr",
+"name":"Sentiment Analysis Service",
+"description":"A simple sentiment Analysis implementation",
+"bindable":true,
+"plan_updateable":false,
+"plans":[
+{
+"id":"sentimentr-plan",
+"name":"Default Sentimentr Plan",
+"description":"This is a default sentimentr plan. All services are created equally.",
+"metadata":{
+"costs":[
+{
+"amount":{
+"usd":0.0
+},
+"unit":"MONTHLY"
+}
+],
+"bullets":[
+"Shared sentiment analysis service",
+"limit 1",
+"limit 2"
+]
+},
+"free":false
+}
+],
+"tags":[
+"sentimentr",
+"uri"
+],
+"metadata":{
+"longDescription":"Sentimentr Service",
+"documentationUrl":"http://www.pivotal.io",
+"providerDisplayName":"Pivotal",
+"displayName":"Sentimentr",
+"imageUrl":"http://pbs.twimg.com/profile_images/722745234/nlp-logo-4x4.jpg",
+"supportUrl":"http://www.pivotal.io"
+},
+"requires":[
+],
+"dashboard_client":null
+}
+]
+}
+
+Create Service
+==============
+
+curl http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/service_instances/:instance_id -d '{
+  "service_id":        "sentimentr",
+  "plan_id":           "sentimentr-plan",
+  "organization_guid": "org-guid-here",
+  "space_guid":        "space-guid-here"
+}' -X PUT -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
+
+Update Service
+==============
+
+curl http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/service_instances/:instance_id -d '{
+  "plan_id": "plan-guid-here"
+}' -X PATCH -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
+
+Service Binding
+===============
+
+curl http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/service_instances/:instance_id/service_bindings/:binding_id -d '{
+  "plan_id":        "plan-guid-here",
+  "service_id":     "service-guid-here",
+  "app_guid":       "app-guid-here"
+}' -X PUT -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
+
+==>
+{
+    "syslog_drain_url": null,
+    "credentials": {
+        "uri": "http://localhost:8080/sentiment"
+    }
+}

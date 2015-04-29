@@ -14,4 +14,12 @@ blobs
 *#
 #*
 src/sentimentr-service/target/*
+src/sentimentr-service-broker/build/*
+src/sentimentr-service-broker/bin/*
 latest.tgz
+.classpath
+.project
+.settings
+.springBeans
+.gradle
+
