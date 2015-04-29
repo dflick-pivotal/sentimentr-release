@@ -1,0 +1,25 @@
+---
+packages:
+- name: java
+  version: 179184bccef7d83099c442d5abe8196578a99233
+  fingerprint: 179184bccef7d83099c442d5abe8196578a99233
+  sha1: d94bac5cb6325b59bfccbd5e51f8e5ad06d96d6d
+  dependencies: []
+- name: sentimentr
+  version: 86db072c86a61b0beb78a0d60ecf3a1e8f41b31f
+  fingerprint: 86db072c86a61b0beb78a0d60ecf3a1e8f41b31f
+  sha1: 9e5449605ebadf9fc7d0ab9cf1b902535d780a54
+  dependencies: []
+jobs:
+- name: sentimentr
+  version: 16b28b002bef84d6b98263b1299852675e50a19e
+  fingerprint: 16b28b002bef84d6b98263b1299852675e50a19e
+  sha1: 841477b2ced560c874ef3fea2af2ddfcbf26d1e3
+license:
+  version: 0fbc9511a7e7f3a4d2f1af47f5ed327237b5f06c
+  fingerprint: 0fbc9511a7e7f3a4d2f1af47f5ed327237b5f06c
+  sha1: 525ad535847638c56e5cde91eca7ac13784da990
+commit_hash: e2a66fb5
+uncommitted_changes: true
+name: sentimentr-release
+version: '1'

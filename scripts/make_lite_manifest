@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e -x
+
+# copied/adopted from https://github.com/cloudfoundry/bosh-lite/blob/master/bin/make_manifest_spiff
+
+SENTIMENTR_HOME=$(dirname $0)/..
+BOSH_STATUS=$(bosh status)
+EXPECTED_DIRECTOR_NAME="Bosh Lite Director"
+DIRECTOR_UUID=$(echo "$BOSH_STATUS" | grep UUID | awk '{print $2}')
+
+if [[ "$(echo "$BOSH_STATUS" | grep Name)" != *"$EXPECTED_DIRECTOR_NAME"* ]]; then
+  echo "Can only target $EXPECTED_DIRECTOR_NAME. Please use 'bosh target' before running this script."
+  exit 1
+fi
+
+temp_dir=${TMPDIR:-${SENTIMENTR_HOME}/tmp}/boshlite-$$.tmp
+mkdir -p $temp_dir
+
+cp $SENTIMENTR_HOME/manifests/bosh-lite.yml $temp_dir/stub-with-uuid.yml
+
+echo $DIRECTOR_UUID
+perl -pi -e "s/PLACEHOLDER-DIRECTOR-UUID/$DIRECTOR_UUID/g" $temp_dir/stub-with-uuid.yml
+
+cp $temp_dir/stub-with-uuid.yml $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
+
+rm -f $temp_dir/*
+rmdir $temp_dir
+
+bosh deployment $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
+bosh status

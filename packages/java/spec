@@ -1,7 +1,4 @@
 ---
 name: java
-
-dependencies:
-
 files:
-- java/**/*
+- java/*
