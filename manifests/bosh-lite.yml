@@ -1,6 +1,6 @@
 name: sentimentr-deployment
 
-director_uuid: PLACEHOLDER-DIRECTOR-UUID
+director_uuid: 4796378f-cc91-4d93-a1b0-75a9af101708
 
 releases:
 - {name: sentimentr-release, version: latest}
@@ -38,6 +38,14 @@ jobs:
   instances: 1
   templates:
   - {name: sentimentr, release: sentimentr-release}
+  resource_pool: small
+  networks:
+  - name: default
+
+- name: sentimentr-service-broker
+  instances: 1
+  templates:
+  - {name: sentimentr-service-broker, release: sentimentr-release}
   resource_pool: small
   networks:
   - name: default

@@ -10,7 +10,7 @@ java -jar build/libs/spring-boot-cf-service-broker-sentimentr.war
 Get Catalog
 ===========
 
-curl -H "X-Broker-API-Version: 2.4" http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/catalog
+curl -H "X-Broker-API-Version: 2.4" http://user:password@localhost:8080/v2/catalog
 
 ==>
 {
@@ -67,7 +67,7 @@ curl -H "X-Broker-API-Version: 2.4" http://user:1fce362b-2e76-43cc-9b81-2934460a
 Create Service
 ==============
 
-curl http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/service_instances/:instance_id -d '{
+curl http://user:password@localhost:8080/v2/service_instances/:instance_id -d '{
   "service_id":        "sentimentr",
   "plan_id":           "sentimentr-plan",
   "organization_guid": "org-guid-here",
@@ -77,14 +77,14 @@ curl http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/service_
 Update Service
 ==============
 
-curl http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/service_instances/:instance_id -d '{
+curl http://user:password@localhost:8080/v2/service_instances/:instance_id -d '{
   "plan_id": "plan-guid-here"
 }' -X PATCH -H "X-Broker-API-Version: 2.4" -H "Content-Type: application/json"
 
 Service Binding
 ===============
 
-curl http://user:1fce362b-2e76-43cc-9b81-2934460ac15c@localhost:8080/v2/service_instances/:instance_id/service_bindings/:binding_id -d '{
+curl http://user:password@localhost:8080/v2/service_instances/:instance_id/service_bindings/:binding_id -d '{
   "plan_id":        "plan-guid-here",
   "service_id":     "service-guid-here",
   "app_guid":       "app-guid-here"

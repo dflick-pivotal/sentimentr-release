@@ -1,0 +1,8 @@
+---
+name: sentimentr-service-broker
+templates:
+  sentimentr-service-broker_ctl.erb: bin/sentimentr-service-broker_ctl
+
+packages: 
+- java
+- sentimentr-service-broker

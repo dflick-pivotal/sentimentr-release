@@ -1,0 +1,6 @@
+---
+name: sentimentr-service-broker
+
+files:
+- java/*
+- sentimentr-service-broker/**/*

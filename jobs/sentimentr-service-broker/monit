@@ -1,0 +1,5 @@
+check process sentimentr-service-broker
+  with pidfile /var/vcap/sys/run/sentimentr-service-broker/pid
+  start program "/var/vcap/jobs/sentimentr-service-broker/bin/sentimentr-service-broker_ctl start"
+  stop program "/var/vcap/jobs/sentimentr-service-broker/bin/sentimentr-service-broker_ctl stop"
+  group vcap
