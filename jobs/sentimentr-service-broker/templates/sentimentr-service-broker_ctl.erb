@@ -16,7 +16,7 @@ case $1 in
 
     export PATH=/var/vcap/packages/java/bin:$PATH
 
-    exec chpst -u vcap:vcap java -jar sentimentr-service-broker.jar -sentimentrServiceID=10.244.0.10 \
+    exec chpst -u vcap:vcap java -jar sentimentr-service-broker.jar -sentimentrServiceID=<%= p("sentimentr.host") %> \
       >>  $LOG_DIR/sentimentr-service-broker.stdout.log \
       2>> $LOG_DIR/sentimentr-service-broker.stderr.log
 

@@ -20,6 +20,27 @@ networks:
   cloud_properties:
     name: random
 
+
+###########
+- name: s1
+  subnets:
+  - cloud_properties:
+      name: random
+    range: 10.244.5.0/30
+    reserved:
+    - 10.244.5.1
+    static:
+    - 10.244.5.2
+#  - cloud_properties:
+#    name: random
+#     range: 10.244.0.4/30
+#     reserved:
+#     - 10.244.0.5
+#     static:
+#     - 10.244.0.6
+
+###########
+
 compilation:
   workers: 1
   network: default
@@ -40,7 +61,11 @@ jobs:
   - {name: sentimentr, release: sentimentr-release}
   resource_pool: small
   networks:
-  - name: default
+  - name: s1
+    static_ips:
+    - 10.244.5.2
+ 
+  #############
 
 - name: sentimentr-service-broker
   instances: 1
@@ -49,3 +74,10 @@ jobs:
   resource_pool: small
   networks:
   - name: default
+  run-after:
+  - sentimentr
+
+properties:
+  sentimentr-service-broker:
+    sentimentr:
+      host: (( jobs.sentimentr.networks.s1.static_ips.[0] ))

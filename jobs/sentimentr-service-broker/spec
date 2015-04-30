@@ -6,3 +6,11 @@ templates:
 packages: 
 - java
 - sentimentr-service-broker
+
+properties:
+  sentimentr.port:
+    description: "Port for the sentimentr to listen on"
+    default: 8080
+  sentimentr.host:
+    description: 'Host for the sentimentr'
+    default: 10.244.5.2
