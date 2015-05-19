@@ -19,13 +19,13 @@ public class CatalogConfig {
 		return new Catalog( Arrays.asList(
 				new ServiceDefinition(
 					"sentimentr", 
-					"Sentiment Analysis Service", 
-					"A simple sentiment Analysis implementation", 
+					"sentimentr", 
+					"A simple sentiment analysis implementation", 
 					true, 
 					false,
 					Arrays.asList(
 							new Plan("sentimentr-plan", 
-									"Default Sentimentr Plan", 
+									"sentimentr-plan", 
 									"This is a default sentimentr plan.  All services are created equally.",
 									getPlanMetadata())),
 					Arrays.asList("sentimentr", "uri"),
@@ -68,8 +68,8 @@ public class CatalogConfig {
 	
 	private List<String> getBullets() {
 		return Arrays.asList("Shared sentiment analysis service", 
-				"limit 1", 
-				"limit 2");
+				"enjoy !!!", 
+				"enjoy !!!");
 	}
 	
 }

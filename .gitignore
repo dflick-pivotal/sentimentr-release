@@ -22,4 +22,11 @@ latest.tgz
 .settings
 .springBeans
 .gradle
+sentimentr-client/sentimentr-ui/target/*
+sentimentr-client/sentimentr-connector/target/*
+.DS_Store
+*/.classpath
+*/.project
+*/.settings
+*/.springBeans
 

@@ -1,6 +1,9 @@
 ---
 applications:
-- name: mongo-broker
+- name: sentimentr-broker
   memory: 512M
   instances: 1
   path: build/libs/sentimentr-service-broker.war
+  env:
+    sentimentr_uri: sentimentr.emea.fe.gopivotal.com
+#    sentimentr_uri: sentimentr.10.244.0.34.xip.io

@@ -8,7 +8,6 @@ import org.cloudfoundry.community.servicebroker.exception.ServiceInstanceBinding
 import org.cloudfoundry.community.servicebroker.model.ServiceInstance;
 import org.cloudfoundry.community.servicebroker.model.ServiceInstanceBinding;
 import org.cloudfoundry.community.servicebroker.service.ServiceInstanceBindingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,19 +17,9 @@ public class SentimentrServiceInstanceBindingService implements
 
 	private ServiceInstanceBinding serviceInstanceBinding = null;
 	
-    @Value("${sentimentrServiceIP}")
-    private String sentimentrServiceIP;
-	
-//	private MongoAdminService mongo; 
-	
-//	private MongoServiceInstanceBindingRepository repository;
-	
-//	@Autowired
-//	public SentimentrServiceInstanceBindingService() {
-//		this.mongo = mongo;
-//		this.repository = repository;
-//	}
-	
+    @Value("${sentimentr_uri}")
+    private String sentimentr_uri;
+    	
 	@Override
 	public ServiceInstanceBinding createServiceInstanceBinding(
 			String bindingId, ServiceInstance serviceInstance,
@@ -38,36 +27,26 @@ public class SentimentrServiceInstanceBindingService implements
 			throws ServiceInstanceBindingExistsException, ServiceBrokerException {
 	
 		ServiceInstanceBinding binding = null;
-//		ServiceInstanceBinding binding = repository.findOne(bindingId);
-//		if (binding != null) {
-//			throw new ServiceInstanceBindingExistsException(binding);
-//		}
 		
 		String username = bindingId;
 		// TODO Password Generator
 		String password = "password";
 		
 		// TODO check if user already exists in the DB
-
-//		mongo.createUser(database, username, password);
 		
 		Map<String,Object> credentials = new HashMap<String,Object>();
-//		credentials.put("uri", mongo.getConnectionString(database, username, password));
-		credentials.put("uri", "http://"+sentimentrServiceIP+":8080/sentiment");
+		credentials.put("uri", "http://"+sentimentr_uri+"/sentiment");
 	    
 		if(binding == null)
 		{
 			binding = new ServiceInstanceBinding(bindingId, serviceInstance.getId(), credentials, null, appGuid);
 		}
-		
-//		repository.save(binding);
-		
+				
 		return binding;
 	}
 
 	protected ServiceInstanceBinding getServiceInstanceBinding(String id) {
 		// Implement h2 to store Service Instance Binding
-//		return repository.findOne(id);
 		return serviceInstanceBinding;
 	}
 
@@ -78,8 +57,6 @@ public class SentimentrServiceInstanceBindingService implements
 			throws ServiceBrokerException {
 		ServiceInstanceBinding binding = getServiceInstanceBinding(bindingId);
 		if (binding!= null) {
-//			mongo.deleteUser(binding.getServiceInstanceId(), bindingId);
-//			repository.delete(bindingId);
 		}
 		return binding;
 	}
