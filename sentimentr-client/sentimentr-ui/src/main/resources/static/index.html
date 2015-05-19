@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<title>Sentimentr-Client</title>
+<link href="css/angular-bootstrap.css" rel="stylesheet">
+<style type="text/css">
+[ng\:cloak], [ng-cloak], .ng-cloak {
+	display: none !important;
+}
+
+.voffset {
+	margin-top: 25px;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="sentimentr-client">
+	<div class="container">
+
+		<div ng-include="'/templates/header.html'"></div>
+
+		<div class="container-fluid voffset">
+
+			<h1 class="page-header">Sentimentr</h1>
+
+			<div ng-controller="sentiment" ng-cloak class="ng-cloak"
+				ng-init="init()">
+
+
+				<div class="row">
+					<div class="col-lg-6">
+						<form ng-submit="submit()">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button"
+										ng-click="submit()">Submit</button>
+								</span> <input type="text" class="form-control" placeholder="text"
+									ng-model="text" ng-change="change()">
+							</div>
+						</form>
+
+					</div>
+				</div>
+
+				<div class="row voffset">
+					<div class="panel panel-default">
+						<div class="panel-heading">{{text}}</div>
+						<div class="panel-body">Score: {{data.sentiment}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				Possible scores:
+				<ul>
+					<li>0 - very negative
+					<li>1 - negative
+					<li>2 - neutral
+					<li>3 - positive
+					<li>4 - very positive
+				</ul>
+			</div>
+		</div>
+		<ul class="nav nav-sidebar-bottom">
+			<img src='/img/PoweredByPivotal.png' alt='Pivotal'>
+		</ul>
+	</div>
+
+	<script src="js/angular-bootstrap.js" type="text/javascript"></script>
+	<script src="js/sentimentr-client.js" type="text/javascript"></script>
+	<script src="js/info.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+---
+applications:
+- name: sentimentr-client
+  memory: 512M
+  instances: 1
+  path: sentimentr-ui/target/sentimentr-ui-0.0.1-SNAPSHOT.jar
+  services: [ mysenti ]
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
