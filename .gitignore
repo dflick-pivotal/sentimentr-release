@@ -29,4 +29,5 @@ sentimentr-client/sentimentr-connector/target/*
 */.project
 */.settings
 */.springBeans
+src/sentimentr-service/.settings/org.eclipse.m2e.core.prefs
 
