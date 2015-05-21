@@ -2,17 +2,17 @@ package org.cloudfoundry.community.servicebroker.sentimentr.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.cloudfoundry.community.servicebroker.model.BrokerApiVersion;
 
-
-/** 
- * Force the base spring boot packages to be searched for dependencies.
- * 
- * @author sgreenberg
- *
- */
+import org.springframework.context.annotation.Bean;
 
 @Configuration
 @ComponentScan(basePackages = "org.cloudfoundry.community.servicebroker")
 public class BrokerConfig {
+
+  @Bean
+  public BrokerApiVersion brokerApiVersion() {
+    return new BrokerApiVersion();
+  }
 
 }
