@@ -6,7 +6,7 @@ import org.springframework.cloud.localconfig.LocalConfigServiceInfoCreator;
 import org.springframework.cloud.service.UriBasedServiceData;
 
 public class SentimentrServiceInfoCreator extends LocalConfigServiceInfoCreator<SentimentrServiceInfo> {
-    public static final String CITIES_TAG = "sentimentr";
+    public static final String SENTIMENTR_TAG = "sentimentr";
 
     public SentimentrServiceInfoCreator() {
         super("http");
@@ -14,7 +14,9 @@ public class SentimentrServiceInfoCreator extends LocalConfigServiceInfoCreator<
 
     @Override
     public boolean accept(UriBasedServiceData serviceData) {
-        return super.accept(serviceData) && CITIES_TAG.equals(serviceData.getKey());
+    	System.out.println("############### serviceData.getKey(): "+serviceData.getKey());
+    	System.out.println("############### serviceData.getValue(): "+serviceData.getUri());
+        return super.accept(serviceData) && SENTIMENTR_TAG.equals(serviceData.getKey());
     }
 
     @Override
