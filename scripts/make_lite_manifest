@@ -20,6 +20,7 @@ cp $SENTIMENTR_HOME/manifests/bosh-lite.yml $temp_dir/stub-with-uuid.yml
 
 echo $DIRECTOR_UUID
 perl -pi -e "s/PLACEHOLDER-DIRECTOR-UUID/$DIRECTOR_UUID/g" $temp_dir/stub-with-uuid.yml
+touch $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
 rm $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
 cp $temp_dir/stub-with-uuid.yml $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
 
