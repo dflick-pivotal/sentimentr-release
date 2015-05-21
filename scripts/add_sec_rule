@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e -x
+
+SENTIMENTR_HOME=$(dirname $0)/..
+CF_APPS=$(cf apps)
+EXPECTED_APP_STATUS="started"
+
+cf create-security-group sentimentr $SENTIMENTR_HOME/rule.json
+
+cf bind-running-security-group sentimentr
+
+if [[ "$(echo "$CF_APPS" | grep sentimentr-client)" == *"$EXPECTED_APP_STATUS"* ]]; then
+  cf restage sentimentr-client
+fi
