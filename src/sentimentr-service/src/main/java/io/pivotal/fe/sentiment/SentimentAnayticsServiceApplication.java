@@ -27,11 +27,14 @@ public class SentimentAnayticsServiceApplication {
 	}
 
 	@RequestMapping("/sentiment/{text}")
-	public Map<String,Object> sentiment(@PathVariable String text) {
+	public Map<String,Object> sentiment(@PathVariable String text, HttpServletRequest request) {
 		int sentiment = NLP.findSentiment(text);
 	    Map<String,Object> model = new HashMap<String,Object>();
 	    model.put("id", UUID.randomUUID().toString());
 	    model.put("sentiment", new Integer(sentiment));
+	    
+	    System.out.println("######### Remote IP: "+request.getRemoteHost());
+	    
 		return model;
 	}
 
