@@ -26,11 +26,10 @@ networks:
   subnets:
   - cloud_properties:
       name: random
-    range: 10.244.5.0/30
+    range: 10.244.5.0/25
     reserved:
     - 10.244.5.1
-    static:
-    - 10.244.5.2
+    static: [10.244.5.2-10.244.5.20]
 #  - cloud_properties:
 #    name: random
 #     range: 10.244.0.4/30
@@ -73,11 +72,61 @@ jobs:
   - {name: sentimentr-service-broker, release: sentimentr-release}
   resource_pool: small
   networks:
-  - name: default
+  - name: s1
+    static_ips:
+    - 10.244.5.10
   run-after:
   - sentimentr
+
+#### Added for broker-registrar June 9
+- name: broker-registrar
+  instances: 1
+  templates:
+  - {name: broker-registrar, release: sentimentr-release}
+  lifecycle: errand
+  networks:
+  - name: default
+  properties:
+    broker:
+      protocol: http
+      port: 8082
+      host: 10.244.5.10
+      name: sentimentr
+      username: "user"
+      password: "password"
+  resource_pool: small
+
+#### Added for broker-registrar June 9
+- name: broker-deregistrar
+  instances: 1
+  templates:
+  - {name: broker-deregistrar, release: sentimentr-release}
+  lifecycle: errand
+  networks:
+  - name: default
+  properties:
+    broker:
+      protocol: http
+      port: 8082
+      host: 10.244.5.10
+      name: sentimentr
+      username: "user"
+      password: "password"
+  resource_pool: small
 
 properties:
   sentimentr-service-broker:
     sentimentr:
       host: (( jobs.sentimentr.networks.s1.static_ips.[0] ))
+  broker-registrar:
+    broker:
+      host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
+  broker-deregistrar:
+    broker:
+      host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
+  #### Added for broker-registrar June 9
+  cf:
+    admin_password: "admin"
+    admin_username: "admin"
+    api_url: "http://api.10.244.0.34.xip.io"
+    
