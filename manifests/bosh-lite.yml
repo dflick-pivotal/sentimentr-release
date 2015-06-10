@@ -90,7 +90,6 @@ jobs:
     broker:
       protocol: http
       port: 8082
-      host: 10.244.5.10
       name: sentimentr
       username: "user"
       password: "password"
@@ -108,23 +107,16 @@ jobs:
     broker:
       protocol: http
       port: 8082
-      host: 10.244.5.10
       name: sentimentr
       username: "user"
       password: "password"
   resource_pool: small
 
 properties:
-  sentimentr-service-broker:
-    sentimentr:
-      host: (( jobs.sentimentr.networks.s1.static_ips.[0] ))
-  broker-registrar:
-    broker:
+  sentimentr:
+    host: (( jobs.sentimentr.networks.s1.static_ips.[0] ))
+  broker:
       host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
-  broker-deregistrar:
-    broker:
-      host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
-  #### Added for broker-registrar June 9
   cf:
     admin_password: "admin"
     admin_username: "admin"

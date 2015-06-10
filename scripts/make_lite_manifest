@@ -22,7 +22,8 @@ echo $DIRECTOR_UUID
 perl -pi -e "s/PLACEHOLDER-DIRECTOR-UUID/$DIRECTOR_UUID/g" $temp_dir/stub-with-uuid.yml
 
 rm -f $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
-cp $temp_dir/stub-with-uuid.yml $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
+spiff merge $temp_dir/stub-with-uuid.yml > $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
+# cp $temp_dir/stub-with-uuid.yml $SENTIMENTR_HOME/manifests/sentimentr-manifest.yml
 
 rm -f $temp_dir/*
 rmdir $temp_dir
