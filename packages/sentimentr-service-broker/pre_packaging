@@ -4,13 +4,35 @@ set -e -x
 JAVA_VERSION=jdk1.8.0_45
 JAVA_TARBALL=jdk-8u45-linux-x64.gz
 
-mkdir -p /tmp/java
-tar zxf java/${JAVA_TARBALL} -C /tmp/java
-export JAVA_HOME=/tmp/java/${JAVA_VERSION}
+# Make sure we can see uname
+export PATH=$PATH:/bin:/usr/bin
+
+###############
+if [ `uname` = "Linux" ]; then
+  mkdir -p /tmp/java
+  tar zxf java/${JAVA_TARBALL} -C /tmp/java
+  export JAVA_HOME=/tmp/java/${JAVA_VERSION}
+  export PATH=$JAVA_HOME/bin:$PATH
+else
+  if [ ! -d $JAVA_HOME ]; then
+    echo "JAVA_HOME properly set is required for non Linux/Darwin builds."
+    exit 1
+  fi
+fi
+
+###############
+
+
 
 cd ${BUILD_DIR}/sentimentr-service-broker
-curl -v http://www.google.de
 
 ./gradlew assemble
 
 cp -a build/libs/sentimentr-service-broker.war ${BUILD_DIR}/sentimentr-service-broker.jar
+
+#clean build data
+./gradlew clean
+
+rm -rf tmp/java
+
+#${BUILD_DIR}/login/.clean-cf-release-build
