@@ -1,0 +1,21 @@
+# abort script on any command that exits with a non zero value
+set -e -x
+
+MAVEN_VERSION=apache-maven-3.3.3
+MAVEN_TARBALL=${MAVEN_VERSION}-bin.tar.gz
+JAVA_VERSION=jdk1.8.0_45
+JAVA_TARBALL=jdk-8u45-linux-x64.gz
+
+mkdir -p /tmp/java
+tar zxf java/${JAVA_TARBALL} -C /tmp/java
+export JAVA_HOME=/tmp/java/${JAVA_VERSION}
+
+mkdir -p /tmp/mvn
+tar zxf mvn/${MAVEN_TARBALL} -C /tmp/mvn
+export MAVEN_HOME=${BOSH_COMPILE_TARGET}/${MAVEN_VERSION}
+export PATH=/tmp/mvn/bin:$PATH
+
+cd ${BUILD_DIR}/sentimentr-service
+mvn -B -e clean install -DskipTests=true
+
+cp -a target/sentiment-0.0.1-SNAPSHOT.jar ${BUILD_DIR}/sentimentr.jar
