@@ -4,10 +4,10 @@ set -e -x
 JAVA_VERSION=jdk1.8.0_45
 JAVA_TARBALL=jdk-8u45-linux-x64.gz
 
-tar zxf java/${JAVA_TARBALL}
-export JAVA_HOME=${BOSH_COMPILE_TARGET}/${JAVA_VERSION}
+tar zxf java/${JAVA_TARBALL} -C /tmp/java
+export JAVA_HOME=/tmp/java/${JAVA_VERSION}
 
-cd ${BOSH_COMPILE_TARGET}/sentimentr-service-broker
+cd ${BUILD_DIR}/sentimentr-service-broker
 curl -v http://www.google.de
 
 ./gradlew assemble
