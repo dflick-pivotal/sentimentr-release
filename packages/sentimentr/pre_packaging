@@ -32,7 +32,7 @@ fi
 cd ${BUILD_DIR}/sentimentr-service
 mvn -B -e clean install -DskipTests=true
 
-cp -a target/sentiment-0.0.1-SNAPSHOT.jar ${BUILD_DIR}/sentimentr.jar
+cp -a target/sentiment-0.0.1-SNAPSHOT.jar ${BUILD_DIR}/sentiment-0.0.1-SNAPSHOT.jar
 
 #clean build data
 mvn clean
