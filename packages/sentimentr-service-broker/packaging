@@ -1,4 +1,4 @@
 # abort script on any command that exits with a non zero value
 set -e -x
 
-cp -a ${BUILD_DIR}/sentimentr-service-broker.jar ${BOSH_INSTALL_TARGET}/sentimentr-service-broker.jar
+cp -a ${BOSH_COMPILE_TARGET}/sentimentr-service-broker.jar ${BOSH_INSTALL_TARGET}/sentimentr-service-broker.jar

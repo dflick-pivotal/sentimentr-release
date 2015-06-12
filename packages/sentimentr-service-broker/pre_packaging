@@ -4,7 +4,7 @@ set -e -x
 JAVA_VERSION=jdk1.8.0_45
 JAVA_TARBALL=jdk-8u45-linux-x64.gz
 
-mkdir /tmp/java
+mkdir -f /tmp/java
 tar zxf java/${JAVA_TARBALL} -C /tmp/java
 export JAVA_HOME=/tmp/java/${JAVA_VERSION}
 
