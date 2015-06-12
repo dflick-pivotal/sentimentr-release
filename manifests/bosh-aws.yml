@@ -1,0 +1,135 @@
+name: sentimentr-deployment
+
+director_uuid: PLACEHOLDER-DIRECTOR-UUID
+
+releases:
+- {name: sentimentr-release, version: latest}
+
+resource_pools:
+- name: small
+  network: default
+  stemcell:
+    name: bosh-aws-xen-hvm-ubuntu-trusty-go_agent
+    version: latest
+  cloud_properties:
+    instance_type: m3.medium
+    availability_zone: us-east-1a
+
+networks:
+# - name: default
+#  type: dynamic
+#  cloud_properties:
+#    subnet: subnet-ba9be9cd
+
+- name: default
+  subnets:
+  - range: 10.0.16.0/20
+    gateway: 10.0.16.1
+    dns:
+    - 10.0.0.2
+    # static:
+    # - 10.0.16.11
+    # - 10.0.16.12
+    reserved:
+    - 10.0.16.2-10.0.16.10
+    # - 10.0.16.52-10.0.31.254
+    - 10.0.16.11-10.0.16.28
+    cloud_properties:
+      subnet: subnet-72c09605
+
+
+- name: s1
+  subnets:
+  - range: 10.0.16.0/20
+    reserved:
+    - 10.0.16.1 - 10.0.16.4
+    - 10.0.16.254
+    static:
+    - 10.0.16.250 - 10.0.16.251
+    cloud_properties:
+      subnet: subnet-72c09605
+
+
+compilation:
+  workers: 1
+  network: default
+  reuse_compilation_vms: true
+  cloud_properties:
+    instance_type: m3.medium
+    availability_zone: us-east-1a
+
+update:
+  canaries: 1
+  max_in_flight: 10
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+jobs:
+- name: sentimentr
+  instances: 1
+  templates:
+  - {name: sentimentr, release: sentimentr-release}
+  resource_pool: small
+  networks:
+  - name: s1
+    static_ips:
+    - 10.0.16.250
+
+  #############
+
+- name: sentimentr-service-broker
+  instances: 1
+  templates:
+  - {name: sentimentr-service-broker, release: sentimentr-release}
+  resource_pool: small
+  networks:
+  - name: s1
+    static_ips:
+    - 10.0.16.251
+  run-after:
+  - sentimentr
+
+#### Added for broker-registrar June 9
+- name: broker-registrar
+  instances: 1
+  templates:
+  - {name: broker-registrar, release: sentimentr-release}
+  lifecycle: errand
+  networks:
+  - name: default
+  properties:
+    broker:
+      protocol: http
+      port: 8082
+      name: sentimentr
+      username: "user"
+      password: "password"
+  resource_pool: small
+
+#### Added for broker-registrar June 9
+- name: broker-deregistrar
+  instances: 1
+  templates:
+  - {name: broker-deregistrar, release: sentimentr-release}
+  lifecycle: errand
+  networks:
+  - name: default
+  properties:
+    broker:
+      protocol: http
+      port: 8082
+      name: sentimentr
+      username: "user"
+      password: "password"
+  resource_pool: small
+
+properties:
+  sentimentr:
+    host: (( jobs.sentimentr.networks.s1.static_ips.[0] ))
+  broker:
+      host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
+  cf:
+    admin_password: "admin"
+    admin_username: "admin"
+    api_url: "http://api.10.244.0.34.xip.io"
+    

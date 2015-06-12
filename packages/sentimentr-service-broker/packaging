@@ -8,6 +8,8 @@ tar zxf java/${JAVA_TARBALL}
 export JAVA_HOME=${BOSH_COMPILE_TARGET}/${JAVA_VERSION}
 
 cd ${BOSH_COMPILE_TARGET}/sentimentr-service-broker
+curl -v http://www.google.de
+
 ./gradlew assemble
 
 cp -a build/libs/sentimentr-service-broker.war ${BOSH_INSTALL_TARGET}/sentimentr-service-broker.jar
