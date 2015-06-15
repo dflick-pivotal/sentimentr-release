@@ -1,6 +1,6 @@
 ---
 name: Sentimentr                                    # [1]
-product_version: 1.0.0.1                                      # [1]
+product_version: 1.0.0.2                                      # [1]
 metadata_version: "1.3"                                    # [2]
 target_installer_version: 1.3
 # stemcell:                                                  # [3]
