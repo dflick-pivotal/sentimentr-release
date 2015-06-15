@@ -156,8 +156,6 @@ job_types:
        address: (( ..cf.properties.syslog_host.value ))
        port: (( ..cf.properties.syslog_port.value ))
        transport: (( ..cf.properties.syslog_protocol.value ))
-#    sentimentr:
-#      host: (( jobs.sentimentr.networks.s1.static_ips.[0] ))
 - name: broker-registrar
   resource_label: Register broker
   template: broker-registrar
@@ -199,8 +197,6 @@ job_types:
        address: (( ..cf.properties.syslog_host.value ))
        port: (( ..cf.properties.syslog_port.value ))
        transport: (( ..cf.properties.syslog_protocol.value ))
-#    broker:
-#      host: "sentimentr-service-broker.(( $runtime.system_domain ))"
     cf:
       admin_password: (( ..cf.uaa.system_services_credentials.password ))
       admin_username: (( ..cf.uaa.system_services_credentials.identity ))
@@ -247,8 +243,6 @@ job_types:
        address: (( ..cf.properties.syslog_host.value ))
        port: (( ..cf.properties.syslog_port.value ))
        transport: (( ..cf.properties.syslog_protocol.value ))
-#    broker:
-#      host: "sentimentr-service-broker.(( $runtime.system_domain ))"
     cf:
       admin_password: (( ..cf.uaa.system_services_credentials.password ))
       admin_username: (( ..cf.uaa.system_services_credentials.identity ))
