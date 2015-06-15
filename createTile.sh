@@ -7,7 +7,7 @@ RELEASE_TARFILE=`pwd`/releases/*/*.tgz
 #BOSH_STEMCELL_LOCATION=https://s3.amazonaws.com/bosh-jenkins-artifacts/bosh-stemcell/vsphere
 
 mkdir -p tmp
-pushd tmp
+cd tmp
 mkdir -p metadata releases #stemcells
 cp $TILE_FILE metadata
 cp $RELEASE_TARFILE releases
@@ -16,4 +16,4 @@ cp $RELEASE_TARFILE releases
 #fi
 zip -r $TILE_NAME.pivotal metadata releases #stemcells
 mv $TILE_NAME.pivotal ..
-popd
+cd ..
