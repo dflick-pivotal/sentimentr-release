@@ -30,4 +30,6 @@ sentimentr-client/sentimentr-connector/target/*
 */.settings
 */.springBeans
 src/sentimentr-service/.settings/org.eclipse.m2e.core.prefs
-
+releases/sentimentr-release/sentimentr-release-*.tgz
+tmp
+sentimentr.pivotal
