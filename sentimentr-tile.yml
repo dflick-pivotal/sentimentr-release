@@ -3,12 +3,12 @@ name: Sentimentr                                    # [1]
 product_version: 1.0.0.2                                      # [1]
 metadata_version: "1.3"                                    # [2]
 target_installer_version: 1.3
-# stemcell:                                                  # [3]
+stemcell:                                                  # [3]
   #name: bosh-vsphere-esxi-ubuntu-trusty-go_agent                     # FOR VSPHERE
   #file: bosh-stemcell-2865.1-vsphere-esxi-ubuntu-trusty-go_agent.tgz # FOR VSPHERE - but could not locate one directly from bosh s3 repo
-#  name: light-bosh-aws-xen-hvm-ubuntu-trusty-go_agent
-#  file: light-bosh-stemcell-2865.1-aws-xen-hvm-ubuntu-trusty-go_agent.tgz # FOR AWS
-#  version: '2865.1'
+  name: light-bosh-aws-xen-hvm-ubuntu-trusty-go_agent
+  file: light-bosh-stemcell-2865.1-aws-xen-hvm-ubuntu-trusty-go_agent.tgz # FOR AWS
+  version: '2865.1'
 releases:                                                  # [5]
   - name: sentimentr-release
     file: sentimentr-release-4.tgz
