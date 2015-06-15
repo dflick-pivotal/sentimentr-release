@@ -146,6 +146,10 @@ job_types:
     type: domain
     configurable: true
     optional: true
+  manifest: |
+    sentimentr:
+      host: (( .sentimentr.first_ip ))
+
 - name: broker-registrar
   resource_label: Register broker
   template: broker-registrar
@@ -224,11 +228,11 @@ job_types:
    - name: ram
      type: integer
      configurable: true
-     default: 1_024
+     default: 2048
    - name: ephemeral_disk
      type: integer
      configurable: true
-     default: 1024
+     default: 20480
    - name: persistent_disk
      type: integer
      configurable: true
