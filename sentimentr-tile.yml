@@ -1,7 +1,7 @@
 ---
-name: Sentimentr                                    # [1]
-product_version: 1.0.0.1                                      # [1]
-metadata_version: "1.3"                                    # [2]
+name: Sentimentr                                    
+product_version: 1.0.0.1                                     
+metadata_version: "1.3"                                    
 target_installer_version: 1.3
 requires_product_versions:
 - name: cf
@@ -10,12 +10,6 @@ stemcell_criteria:
   os: ubuntu-trusty
   version: '2865.1'
   requires_cpi: false
-# stemcell:                                                  # [3]
-  #name: bosh-vsphere-esxi-ubuntu-trusty-go_agent                     # FOR VSPHERE
-  #file: bosh-stemcell-2865.1-vsphere-esxi-ubuntu-trusty-go_agent.tgz # FOR VSPHERE - but could not locate one directly from bosh s3 repo
-#  name: light-bosh-aws-xen-hvm-ubuntu-trusty-go_agent
-#  file: light-bosh-stemcell-2865.1-aws-xen-hvm-ubuntu-trusty-go_agent.tgz # FOR AWS
-#  version: '2865.1'
 releases:                                                  # [5]
   - name: sentimentr-release
     file: sentimentr-release-5.tgz
@@ -23,23 +17,14 @@ releases:                                                  # [5]
 provides_product_versions:
 - name: sentimentr
   version: '5'
-#requires_product_versions:
-#- name: cf
-#  version: "~> 1.3"
 label: Sentimentr
-description: Sentimentr is a sentiment text analysis service  ..
+description: Sentimentr is a sentiment analysis service  ..
 image: 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
-
-
-
-
 rank: 50
 post_deploy_errands:
 - name: broker-registrar
 pre_delete_errands:
 - name: broker-deregistrar
-
-
 job_types:
 - name: sentimentr
   resource_label: Sentimentr
@@ -89,6 +74,7 @@ job_types:
     label: VM credentials
     default:
       identity: vcap
+
 - name: sentimentr-service-broker
   resource_label: Broker
   job_templates:
@@ -147,6 +133,10 @@ job_types:
     type: integer
     configurable: false
     default: 8082    
+  - name: broker_protocol
+    type: string
+    configurable: false
+    default: http    
   manifest: |
     sentimentr:
       host: (( .sentimentr.first_ip ))
@@ -164,7 +154,7 @@ job_types:
   - name: ephemeral_disk
     type: integer
     configurable: false
-    default: 2048
+    default: 1024
   - name: persistent_disk
     type: integer
     configurable: false
@@ -196,6 +186,7 @@ job_types:
       name: (( .sentimentr-service-broker.broker_name.value ))
       host: (( .sentimentr-service-broker.first_ip ))
       port: (( .sentimentr-service-broker.broker_port.value ))
+      protocol: (( .sentimentr-service-broker.broker_protocol.value ))      
       username: "user"
       password: "password"
 
@@ -244,6 +235,7 @@ job_types:
       name: (( .sentimentr-service-broker.broker_name.value ))
       host: (( .sentimentr-service-broker.first_ip ))
       port: (( .sentimentr-service-broker.broker_port.value ))
+      protocol: (( .sentimentr-service-broker.broker_protocol.value ))      
 
 - name: compilation
   resource_label: compilation
