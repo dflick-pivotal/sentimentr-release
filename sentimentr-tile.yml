@@ -143,16 +143,10 @@ job_types:
     type: string
     configurable: false
     default: sentimentr
-  - name: dashboard_client_credentials
-    type: simple_credentials
-    label: Dashboard Client Credentials
+  - name: broker_port
+    type: integer
     configurable: false
-    default:
-      identity: sentimentr-broker
-  - name: bind_hostname
-    type: domain
-    configurable: true
-    optional: true
+    default: 8082    
   manifest: |
     sentimentr:
       host: (( .sentimentr.first_ip ))
@@ -191,15 +185,7 @@ job_types:
   - name: vm_credentials
     type: salted_credentials
     default:
-      identity: vcap
-  - name: broker_name
-    type: string
-    configurable: false
-    default: sentimentr    
-  - name: broker_port
-    type: integer
-    configurable: false
-    default: 8082    
+      identity: vcap    
   manifest: |
     cf:
       api_url: (( $runtime.system_api_url ))
