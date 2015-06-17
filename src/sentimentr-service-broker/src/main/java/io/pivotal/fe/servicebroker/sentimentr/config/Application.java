@@ -1,4 +1,4 @@
-package org.cloudfoundry.community.servicebroker.sentimentr.config;
+package io.pivotal.fe.servicebroker.sentimentr.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

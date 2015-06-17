@@ -12,6 +12,7 @@ public class SentimentrServiceInfoCreator extends
 		CloudFoundryServiceInfoCreator<SentimentrServiceInfo> {
 
 	public static final String SENTIMENTR_TAG = "sentimentr";
+	public static final String SENTIMENTR_USER_PROVIDED_NAME = "mysenti";
 
 	public SentimentrServiceInfoCreator() {
 		super(new Tags(), SENTIMENTR_TAG);
@@ -30,14 +31,17 @@ public class SentimentrServiceInfoCreator extends
 	public boolean accept(Map<String, Object> serviceData) {
 		List<String> tags = (List<String>) serviceData.get("tags");
 		String label = (String) serviceData.get("label");
+		String name = (String) serviceData.get("name");
 
 		boolean tagAcceptable = tags.contains(SENTIMENTR_TAG);
-		// Use label as a tag to cover cases where tag doesn't exist and label
-		// value
-		// itself starts with the tag text (for example, "label : mysql-n/a")
 		boolean labelAcceptable = label != null
 				&& label.startsWith(SENTIMENTR_TAG);
 
-		return tagAcceptable || labelAcceptable;
+		// In the case of an user provided service
+		// cf create-user-provided-service mysenti -p '{ "uri": "http://10.244.5.2:8080/sentiment" }'
+		boolean nameAcceptable = name != null
+				&& name.startsWith(SENTIMENTR_USER_PROVIDED_NAME);
+		
+		return tagAcceptable || labelAcceptable || nameAcceptable;
 	}
 }

@@ -1,4 +1,4 @@
-package org.cloudfoundry.community.servicebroker.sentimentr.config;
+package io.pivotal.fe.servicebroker.sentimentr.config;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,14 +20,18 @@ public class CatalogConfig {
 				new ServiceDefinition(
 					"sentimentr", 
 					"sentimentr", 
-					"A simple sentiment analysis implementation", 
+					"A sentiment analysis service based on stanford university nlp framework", 
 					true, 
 					false,
 					Arrays.asList(
-							new Plan("sentimentr-plan", 
-									"sentimentr-plan", 
-									"This is a default sentimentr plan.  All services are created equally.",
-									getPlanMetadata())),
+							new Plan("development", 
+									"development", 
+									"This is a developer sentimentr plan. Limited service quality.",
+									getDevelopmentPlanMetadata(), true), 
+							new Plan("production", 
+									"production", 
+									"This is a production sentimentr plan. Best service quality.",
+									getProductionPlanMetadata())),
 					Arrays.asList("sentimentr", "uri"),
 					getServiceDefinitionMetadata(),
 					null,
@@ -39,7 +43,8 @@ public class CatalogConfig {
 	private Map<String,Object> getServiceDefinitionMetadata() {
 		Map<String,Object> sdMetadata = new HashMap<String,Object>();
 		sdMetadata.put("displayName", "Sentimentr");
-		sdMetadata.put("imageUrl","http://pbs.twimg.com/profile_images/722745234/nlp-logo-4x4.jpg");
+//		sdMetadata.put("imageUrl","http://pbs.twimg.com/profile_images/722745234/nlp-logo-4x4.jpg");
+		sdMetadata.put("imageUrl","https://github.com/dflick-pivotal/sentimentr-release/blob/master/sentimentr.png");
 		sdMetadata.put("longDescription","Sentimentr Service");
 		sdMetadata.put("providerDisplayName","Pivotal");
 		sdMetadata.put("documentationUrl","http://www.pivotal.io");
@@ -47,14 +52,21 @@ public class CatalogConfig {
 		return sdMetadata;
 	}
 	
-	private Map<String,Object> getPlanMetadata() {		
+	private Map<String,Object> getDevelopmentPlanMetadata() {		
 		Map<String,Object> planMetadata = new HashMap<String,Object>();
-		planMetadata.put("costs", getCosts());
-		planMetadata.put("bullets", getBullets());
+//		planMetadata.put("costs", getCosts());
+		planMetadata.put("bullets", getDevelopmentBullets());
 		return planMetadata;
 	}
-	
-	private List<Map<String,Object>> getCosts() {
+
+	private Map<String,Object> getProductionPlanMetadata() {		
+		Map<String,Object> planMetadata = new HashMap<String,Object>();
+		planMetadata.put("costs", getProductionCosts());
+		planMetadata.put("bullets", getProductionBullets());
+		return planMetadata;
+	}
+
+	private List<Map<String,Object>> getProductionCosts() {
 		Map<String,Object> costsMap = new HashMap<String,Object>();
 		
 		Map<String,Object> amount = new HashMap<String,Object>();
@@ -66,10 +78,16 @@ public class CatalogConfig {
 		return Arrays.asList(costsMap);
 	}
 	
-	private List<String> getBullets() {
+	private List<String> getDevelopmentBullets() {
 		return Arrays.asList("Shared sentiment analysis service", 
-				"enjoy !!!", 
+				"free !!!", 
 				"enjoy !!!");
+	}
+
+	private List<String> getProductionBullets() {
+		return Arrays.asList("Dedicated sentiment analysis service", 
+				"Highly available !!!", 
+				"Best service level !!!");
 	}
 	
 }

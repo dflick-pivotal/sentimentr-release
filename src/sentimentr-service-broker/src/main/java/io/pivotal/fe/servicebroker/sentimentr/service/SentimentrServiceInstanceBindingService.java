@@ -1,4 +1,4 @@
-package org.cloudfoundry.community.servicebroker.sentimentr.service;
+package io.pivotal.fe.servicebroker.sentimentr.service;
 
 import java.util.HashMap;
 import java.util.Map;
