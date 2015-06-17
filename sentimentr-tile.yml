@@ -209,7 +209,7 @@ job_types:
     broker:
       name: (( .sentimentr-service-broker.broker_name.value ))
       host: (( .sentimentr-service-broker.first_ip ))
-      port: (( .sentimentr-service-broker.port.value ))
+      port: (( .sentimentr-service-broker.broker_port.value ))
       username: "user"
       password: "password"
 
@@ -257,7 +257,7 @@ job_types:
     broker:
       name: (( .sentimentr-service-broker.broker_name.value ))
       host: (( .sentimentr-service-broker.first_ip ))
-      port: (( .sentimentr-service-broker.port.value ))
+      port: (( .sentimentr-service-broker.broker_port.value ))
 
 - name: compilation
   resource_label: compilation
