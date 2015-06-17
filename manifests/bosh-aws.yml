@@ -16,27 +16,17 @@ resource_pools:
     availability_zone: us-east-1a
 
 networks:
-# - name: default
-#  type: dynamic
-#  cloud_properties:
-#    subnet: subnet-ba9be9cd
-
 - name: default
   subnets:
   - range: 10.0.16.0/20
     gateway: 10.0.16.1
     dns:
     - 10.0.0.2
-    # static:
-    # - 10.0.16.11
-    # - 10.0.16.12
     reserved:
     - 10.0.16.2-10.0.16.10
-    # - 10.0.16.52-10.0.31.254
     - 10.0.16.11-10.0.16.28
     cloud_properties:
       subnet: subnet-72c09605
-
 
 - name: s1
   subnets:
@@ -48,7 +38,6 @@ networks:
     - 10.0.16.250 - 10.0.16.251
     cloud_properties:
       subnet: subnet-72c09605
-
 
 compilation:
   workers: 1
@@ -75,8 +64,6 @@ jobs:
     static_ips:
     - 10.0.16.250
 
-  #############
-
 - name: sentimentr-service-broker
   instances: 1
   templates:
@@ -89,7 +76,6 @@ jobs:
   run-after:
   - sentimentr
 
-#### Added for broker-registrar June 9
 - name: broker-registrar
   instances: 1
   templates:
@@ -97,16 +83,8 @@ jobs:
   lifecycle: errand
   networks:
   - name: default
-  properties:
-    broker:
-      protocol: http
-      port: 8082
-      name: sentimentr
-      username: "user"
-      password: "password"
   resource_pool: small
 
-#### Added for broker-registrar June 9
 - name: broker-deregistrar
   instances: 1
   templates:
@@ -114,22 +92,19 @@ jobs:
   lifecycle: errand
   networks:
   - name: default
-  properties:
-    broker:
-      protocol: http
-      port: 8082
-      name: sentimentr
-      username: "user"
-      password: "password"
   resource_pool: small
 
 properties:
+  broker:
+    host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
+    protocol: http
+    port: 8082
+    name: sentimentr
+    username: "user"
+    password: "password"
   sentimentr:
     host: (( jobs.sentimentr.networks.s1.static_ips.[0] ))
-  broker:
-      host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
   cf:
     admin_password: "admin"
     admin_username: "admin"
     api_url: "http://api.10.244.0.34.xip.io"
-    

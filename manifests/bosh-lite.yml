@@ -20,8 +20,6 @@ networks:
   cloud_properties:
     name: random
 
-
-###########
 - name: s1
   subnets:
   - cloud_properties:
@@ -29,16 +27,7 @@ networks:
     range: 10.244.5.0/25
     reserved:
     - 10.244.5.1
-    static: [10.244.5.2-10.244.5.20]
-#  - cloud_properties:
-#    name: random
-#     range: 10.244.0.4/30
-#     reserved:
-#     - 10.244.0.5
-#     static:
-#     - 10.244.0.6
-
-###########
+    static: 10.244.5.2-10.244.5.20
 
 compilation:
   workers: 1
@@ -64,8 +53,6 @@ jobs:
     static_ips:
     - 10.244.5.2
 
-  #############
-
 - name: sentimentr-service-broker
   instances: 1
   templates:
@@ -78,7 +65,6 @@ jobs:
   run-after:
   - sentimentr
 
-#### Added for broker-registrar June 9
 - name: broker-registrar
   instances: 1
   templates:
@@ -86,16 +72,8 @@ jobs:
   lifecycle: errand
   networks:
   - name: default
-  properties:
-    broker:
-      protocol: http
-      port: 8082
-      name: sentimentr
-      username: "user"
-      password: "password"
   resource_pool: small
 
-#### Added for broker-registrar June 9
 - name: broker-deregistrar
   instances: 1
   templates:
@@ -103,20 +81,18 @@ jobs:
   lifecycle: errand
   networks:
   - name: default
-  properties:
-    broker:
-      protocol: http
-      port: 8082
-      name: sentimentr
-      username: "user"
-      password: "password"
   resource_pool: small
 
 properties:
+  broker:
+    host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
+    protocol: http
+    port: 8082
+    name: sentimentr
+    username: "user"
+    password: "password"
   sentimentr:
     host: (( jobs.sentimentr.networks.s1.static_ips.[0] ))
-  broker:
-      host: (( jobs.sentimentr-service-broker.networks.s1.static_ips.[0] ))
   cf:
     admin_password: "admin"
     admin_username: "admin"

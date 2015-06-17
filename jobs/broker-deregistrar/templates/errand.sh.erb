@@ -8,9 +8,6 @@ CF_ADMIN_PASSWORD='<%= p("cf.admin_password") %>'
 CF_SKIP_SSL_VALIDATION='<%= p("cf.skip_ssl_validation") %>'
 
 BROKER_NAME='<%= p("broker.name") %>'
-BROKER_URL='<%= p("broker.protocol") %>://<%= p("broker.host") %>:<%= p("broker.port") %>'
-BROKER_USERNAME='<%= p("broker.username") %>'
-BROKER_PASSWORD='<%= p("broker.password") %>'
 
 export PATH=/var/vcap/packages/cf-cli/bin
 
@@ -18,8 +15,6 @@ echo "CF_API_URL=${CF_API_URL}"
 echo "CF_SKIP_SSL_VALIDATION=${CF_SKIP_SSL_VALIDATION}"
 echo "CF_ADMIN_USERNAME=${CF_ADMIN_USERNAME}"
 echo "BROKER_NAME=${BROKER_NAME}"
-echo "BROKER_URL=${BROKER_URL}"
-echo "BROKER_USERNAME=${BROKER_USERNAME}"
 
 if [[ ${CF_SKIP_SSL_VALIDATION} == "true" ]]; then
   cf api ${CF_API_URL} --skip-ssl-validation
