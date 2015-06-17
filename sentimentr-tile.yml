@@ -196,6 +196,10 @@ job_types:
     type: string
     configurable: false
     default: sentimentr    
+  - name: broker_port
+    type: integer
+    configurable: false
+    default: 8082    
   manifest: |
     cf:
       api_url: (( $runtime.system_api_url ))
@@ -205,6 +209,7 @@ job_types:
     broker:
       name: (( .sentimentr-service-broker.broker_name.value ))
       host: (( .sentimentr-service-broker.first_ip ))
+      port: (( .sentimentr-service-broker.port.value ))
       username: "user"
       password: "password"
 
@@ -251,6 +256,8 @@ job_types:
       skip_ssl_validation: (( ..cf.ha_proxy.skip_cert_verify.value ))
     broker:
       name: (( .sentimentr-service-broker.broker_name.value ))
+      host: (( .sentimentr-service-broker.first_ip ))
+      port: (( .sentimentr-service-broker.port.value ))
 
 - name: compilation
   resource_label: compilation
