@@ -2,7 +2,7 @@
 name: Sentimentr                                    
 product_version: 1.0.0.10                                     
 metadata_version: "1.4"                                    
-target_installer_version: 1.4
+target_installer_version: "1.4.0.0"
 requires_product_versions:
 - name: cf
   version: "~> 1.3"
