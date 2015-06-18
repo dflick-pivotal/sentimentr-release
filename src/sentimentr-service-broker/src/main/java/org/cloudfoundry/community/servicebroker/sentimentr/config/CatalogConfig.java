@@ -53,7 +53,7 @@ public class CatalogConfig {
 	
 	private Map<String,Object> getDevelopmentPlanMetadata() {		
 		Map<String,Object> planMetadata = new HashMap<String,Object>();
-//		planMetadata.put("costs", getCosts());
+		planMetadata.put("costs", getDevelopmentCosts());
 		planMetadata.put("bullets", getDevelopmentBullets());
 		return planMetadata;
 	}
@@ -65,11 +65,23 @@ public class CatalogConfig {
 		return planMetadata;
 	}
 
-	private List<Map<String,Object>> getProductionCosts() {
+	private List<Map<String,Object>> getDevelopmentCosts() {
 		Map<String,Object> costsMap = new HashMap<String,Object>();
 		
 		Map<String,Object> amount = new HashMap<String,Object>();
 		amount.put("usd", new Double(0.0));
+	
+		costsMap.put("amount", amount);
+		costsMap.put("unit", "MONTHLY");
+		
+		return Arrays.asList(costsMap);
+	}
+	
+	private List<Map<String,Object>> getProductionCosts() {
+		Map<String,Object> costsMap = new HashMap<String,Object>();
+		
+		Map<String,Object> amount = new HashMap<String,Object>();
+		amount.put("usd", new Double(1.0));
 	
 		costsMap.put("amount", amount);
 		costsMap.put("unit", "MONTHLY");
