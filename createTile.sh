@@ -17,3 +17,4 @@ cp $RELEASE_TARFILE releases
 zip -r $TILE_NAME.pivotal metadata releases #stemcells
 mv $TILE_NAME.pivotal ..
 cd ..
+rm -rf tmp
