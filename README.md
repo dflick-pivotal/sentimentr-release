@@ -1,11 +1,11 @@
 # sentimentr-release
-Project Theme: NLP natural language processing service.
+Project: Pivotal cf nlp natural language processing service.
 
-Project contents: Pivotal cf ops manager tile, bosh release, service, broker and exemplary client app. 
+Contents: Pivotal cf ops manager tile, bosh release, service, broker and exemplary client app. 
  
 Sentimentr service: 
-- provides a sentiment analytics service.
-- uses the CoreNLP library (http://nlp.stanford.edu/software/corenlp.shtml) from stanford university.
+- provides a sentiment analysis service
+- Stanford CoreNLP library (http://nlp.stanford.edu/software/corenlp.shtml)
 - spring boot app
 
 Sentimentr service broker:
@@ -15,20 +15,26 @@ Sentimentr service broker:
 
 Exemplary client:
 - Consumes the sentimentr service
-- Sends text to the sentimentr service and provides the score analyced by the sentimentr service via the ui
-- spring boot app, spring cloud, bootsrap, angularjs
+- Sends text to the sentimentr service and presents the score received from Sentimentr service
+- spring boot app, spring cloud, bootstrap, angularjs
 
 Possible execution:
 - All apps on local machine
 - All apps in elastic runtime
-- Servic and broker deployed via bosh/bosh release and client app in elastic runtime 
-- Servic and broker deployed via Pivotal CF Ops Manager and client app in elastic runtime 
+- Service and broker deployed via bosh/bosh release on AWS or bosh-lite and client app in elastic runtime 
+- Service and broker deployed via Pivotal CF Ops Manager and client app in elastic runtime 
 
 Service binding options:
-- Managed Service with different service plans - via service broker
+- Managed Service
 - User provided service 
 
-# Tile
-- For a quick look - the tile and client app is available on google drivesentimentr-release.
-- For own experiements with creating a bosh release or the tile clone this project.
+# Using pivotal cf ops manager
+
+- The tile and client app is available on google drive.
+ 1. Import the sentimentr.pivotal file in ops manager and hit deploy.
+ 2. Create a sentimentr service instance.
+ 3. Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
+ 4. Push the client app.
+ 
+- For own experiements creating bosh releases or pivotal cf ops manager tiles clone this project.
 
