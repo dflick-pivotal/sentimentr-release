@@ -38,7 +38,7 @@ Service binding options:
  
 - For own experiments (with bosh release or pivotal cf ops manager tile) clone this project.
 
-# How you use the service in your application
+# How you use the service with your own application
 
 The sentimentr-client project contains two sub projects (sentimentr-connector and sentimentr-ui). The sentimentr-connector sub project builds the 'sentimentr-connector.jar' required in sentimentr-ui and also in your own application.
 
