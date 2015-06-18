@@ -31,10 +31,10 @@ Service binding options:
 # How you get started with the sentimentr tile for cf ops manager
 
 - The tile and client app is available on google drive.
- 1. Import the sentimentr.pivotal file in ops manager and hit deploy.
- 2. Create a sentimentr service instance.
- 3. Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
- 4. Push the client app.
+ - Import the sentimentr.pivotal file in ops manager and hit deploy.
+ - Create a sentimentr service instance.
+ - Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
+ - Push the client app.
  
 - For own experiments (with bosh release or pivotal cf ops manager tile) clone this project.
 
