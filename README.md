@@ -18,6 +18,8 @@ Exemplary client:
 - Sends text to the sentimentr service and presents the score received from Sentimentr service
 - spring boot app, spring cloud, bootstrap, angularjs
 
+![Alt text](/docs/sentimentr-client.png?raw=true "sentimentr-client")
+
 Possible execution:
 - All apps on local machine
 - All apps in elastic runtime
