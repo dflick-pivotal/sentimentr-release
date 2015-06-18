@@ -51,6 +51,7 @@ On the local machine:
 - target bosh lite with your bosh cli
 - execute ./scripts/make_lite_manifest.sh
 - execute ./scripts/add_sec_rule (required on bosh lite - configures a security group that allows the app to communicate with the service - thanks Johannes)
+- execute 'bosh upload release releases/sentimentr-release/sentimentr-release-8.yml' ==> gets the sentimentr-release packages from a blobstore.
 - execute 'bosh create release --with-tarball'
 
 example bosh lite
