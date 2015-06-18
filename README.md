@@ -28,15 +28,32 @@ Service binding options:
 - Managed Service
 - User provided service 
 
-# How you get started with the sentimentr tile for cf ops manager
+# Quick start
 
 - The tile and client app is available on google drive.
  - Import the sentimentr.pivotal file in ops manager and hit deploy.
  - Create a sentimentr service instance.
  - Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
  - Push the client app.
- 
-- For own experiments (with bosh release or pivotal cf ops manager tile) clone this project.
+
+# prerequisite for the more advanced stuff
+On the local machine:
+- bosh cli
+- cf commandline 
+- java jdk and maven
+
+
+# How you get started with the sentimentr tile or bosh release
+- clone the project
+- cd into the sentimentr-release folder
+- target bosh lite with your bosh cli
+- execute ./scripts/make_lite_manifest.sh
+- execute 'bosh create release --with-tarball'
+- 
+
+
+example bosh lite
+- 
 
 # How you use the service with your own application
 
