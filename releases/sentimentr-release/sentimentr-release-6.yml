@@ -1,0 +1,43 @@
+---
+packages:
+- name: java
+  version: 179184bccef7d83099c442d5abe8196578a99233
+  sha1: d94bac5cb6325b59bfccbd5e51f8e5ad06d96d6d
+  fingerprint: 179184bccef7d83099c442d5abe8196578a99233
+  dependencies: []
+- name: sentimentr-service-broker
+  version: 5bec6b27170f709c2037c3aabda98176ebc34da1
+  sha1: 82518ef9f41988b6cf3565391d7219f6ceacd6d0
+  fingerprint: 5bec6b27170f709c2037c3aabda98176ebc34da1
+  dependencies: []
+- name: sentimentr
+  version: 59d5bfa99288011fbf47e79204e63c3c481157b3
+  sha1: 7047af46097c75867dfc818e63abfd6d2911f7a6
+  fingerprint: 59d5bfa99288011fbf47e79204e63c3c481157b3
+  dependencies: []
+- name: cf-cli
+  version: 6474277342cd55ca02e402d5fa2a8760e2d91685
+  sha1: 6a52f6fda4f687888edf179687c08c62cdeea9b4
+  fingerprint: 6474277342cd55ca02e402d5fa2a8760e2d91685
+  dependencies: []
+jobs:
+- name: broker-deregistrar
+  version: c4c5cd5a32e1864b68b3f52a6d00b78ffc5a65f3
+  fingerprint: c4c5cd5a32e1864b68b3f52a6d00b78ffc5a65f3
+  sha1: 1873a1ad14fed2353c9db1ad926155f1308dd164
+- name: sentimentr-service-broker
+  version: 3d0bd4f9b9e1a2794841c0bf3e1818939410c195
+  fingerprint: 3d0bd4f9b9e1a2794841c0bf3e1818939410c195
+  sha1: e350ffd72ff28f3ff80b892d2a9a6b4134e2b96e
+- name: broker-registrar
+  version: 82ac6b05def136b5b2ebb48dbf62b6cba56022d0
+  fingerprint: 82ac6b05def136b5b2ebb48dbf62b6cba56022d0
+  sha1: ba75d401d25f088e4dfa519debeede62b18b56d8
+- name: sentimentr
+  version: 16b28b002bef84d6b98263b1299852675e50a19e
+  fingerprint: 16b28b002bef84d6b98263b1299852675e50a19e
+  sha1: 841477b2ced560c874ef3fea2af2ddfcbf26d1e3
+commit_hash: adaaa3b8
+uncommitted_changes: true
+name: sentimentr-release
+version: '6'
