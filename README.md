@@ -28,7 +28,7 @@ Service binding options:
 - Managed Service
 - User provided service 
 
-# Tile for cf ops manager
+# How you get started with the sentimentr tile for cf ops manager
 
 - The tile and client app is available on google drive.
  1. Import the sentimentr.pivotal file in ops manager and hit deploy.
