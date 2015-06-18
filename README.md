@@ -1,5 +1,6 @@
 # sentimentr-release
 Project Theme: NLP natural language processing service.
+
 Project contents: ops manager tile, bosh release, service, broker and exemplary client app. 
  
 Sentimentr service: 
