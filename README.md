@@ -28,7 +28,7 @@ Service binding options:
 - Managed Service
 - User provided service 
 
-# Using pivotal cf ops manager
+# Tile for cf ops manager
 
 - The tile and client app is available on google drive.
  1. Import the sentimentr.pivotal file in ops manager and hit deploy.
@@ -36,5 +36,22 @@ Service binding options:
  3. Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
  4. Push the client app.
  
-- For own experiements creating bosh releases or pivotal cf ops manager tiles clone this project.
+- For own experiments (with bosh release or pivotal cf ops manager tile) clone this project.
+
+# How you use the service in your application
+
+The sentimentr-client project contains two sub projects (sentimentr-connector and sentimentr-ui). The sentimentr-connector sub project builds the 'sentimentr-connector.jar' required in sentimentr-ui and also in your own application.
+
+The sentimentr-ui project uses the sentimentr-connector dependency like this in the maven pom.xml
+
+		<dependency>
+			<groupId>pivotal.sentimentr</groupId>
+			<artifactId>sentimentr-connector</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+In order to send text to the sentimentr service and to receive the score in your own application add code like this
+
+			return sentimentrFacade.getSentiment(text);
+	
 
