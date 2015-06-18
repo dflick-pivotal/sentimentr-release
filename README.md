@@ -41,6 +41,7 @@ Service binding options:
 # Prerequisite for advanced work with bosh
 On the local machine:
 - bosh cli (use: https://github.com/cloudfoundry-community/traveling-bosh)
+- bosh-lite wit cloud foundry installed (https://github.com/cloudfoundry/bosh-lite)
 - cf commandline (use: https://github.com/cloudfoundry/cli)
 - java jdk and maven
 
@@ -51,8 +52,6 @@ On the local machine:
 - execute ./scripts/make_lite_manifest.sh
 - execute ./scripts/add_sec_rule (required on bosh lite - configures a security group that allows the app to communicate with the service - thanks Johannes)
 - execute 'bosh create release --with-tarball'
-- 
-
 
 example bosh lite
 - 
