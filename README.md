@@ -38,7 +38,7 @@ Service binding options:
  - Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
  - Push the client app.
 
-# prerequisite for the more advanced stuff
+# prerequisite for advanced work with bosh
 On the local machine:
 - bosh cli
 - cf commandline 
