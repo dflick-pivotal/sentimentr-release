@@ -1,7 +1,7 @@
 # sentimentr-release
 Project: Pivotal cf nlp natural language processing service.
 
-Contents: Pivotal cf ops manager tile, bosh release, service, broker and exemplary client app. 
+Contents: Sentimentr service tile for pivotal cf ops manager, bosh release, service, broker and exemplary client app. 
  
 Sentimentr service: 
 - provides a sentiment analysis service
