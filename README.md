@@ -40,10 +40,9 @@ Service binding options:
 
 # prerequisite for advanced work with bosh
 On the local machine:
-- bosh cli
-- cf commandline 
+- bosh cli (use: https://github.com/cloudfoundry-community/traveling-bosh)
+- cf commandline (use: https://github.com/cloudfoundry/cli)
 - java jdk and maven
-
 
 # How you get started with the sentimentr tile or bosh release
 - clone the project
