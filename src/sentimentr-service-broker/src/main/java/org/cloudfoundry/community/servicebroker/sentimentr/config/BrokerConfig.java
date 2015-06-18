@@ -1,4 +1,4 @@
-package io.pivotal.fe.servicebroker.sentimentr.config;
+package org.cloudfoundry.community.servicebroker.sentimentr.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

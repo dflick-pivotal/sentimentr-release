@@ -1,4 +1,4 @@
-package io.pivotal.fe.servicebroker.sentimentr.service;
+package org.cloudfoundry.community.servicebroker.sentimentr.service;
 
 import org.cloudfoundry.community.servicebroker.exception.ServiceBrokerException;
 import org.cloudfoundry.community.servicebroker.exception.ServiceInstanceDoesNotExistException;

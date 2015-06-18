@@ -1,4 +1,4 @@
-package io.pivotal.fe.servicebroker.sentimentr.config;
+package org.cloudfoundry.community.servicebroker.sentimentr.config;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,8 +43,7 @@ public class CatalogConfig {
 	private Map<String,Object> getServiceDefinitionMetadata() {
 		Map<String,Object> sdMetadata = new HashMap<String,Object>();
 		sdMetadata.put("displayName", "Sentimentr");
-//		sdMetadata.put("imageUrl","http://pbs.twimg.com/profile_images/722745234/nlp-logo-4x4.jpg");
-		sdMetadata.put("imageUrl","https://github.com/dflick-pivotal/sentimentr-release/blob/master/sentimentr.png");
+		sdMetadata.put("imageUrl","http://pbs.twimg.com/profile_images/722745234/nlp-logo-4x4.jpg");
 		sdMetadata.put("longDescription","Sentimentr Service");
 		sdMetadata.put("providerDisplayName","Pivotal");
 		sdMetadata.put("documentationUrl","http://www.pivotal.io");
