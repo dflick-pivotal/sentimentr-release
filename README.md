@@ -38,7 +38,7 @@ Service binding options:
  - Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
  - Push the client app.
 
-# prerequisite for advanced work with bosh
+# Prerequisite for advanced work with bosh
 On the local machine:
 - bosh cli (use: https://github.com/cloudfoundry-community/traveling-bosh)
 - cf commandline (use: https://github.com/cloudfoundry/cli)
@@ -49,6 +49,7 @@ On the local machine:
 - cd into the sentimentr-release folder
 - target bosh lite with your bosh cli
 - execute ./scripts/make_lite_manifest.sh
+- execute ./scripts/add_sec_rule (required on bosh lite - configures a security group that allows the app to communicate with the service - thanks Johannes)
 - execute 'bosh create release --with-tarball'
 - 
 
