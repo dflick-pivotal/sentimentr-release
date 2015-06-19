@@ -111,7 +111,7 @@ provides_product_versions:
 # How to consume the service in own java applications
 The sentimentr-client project contains two sub projects (sentimentr-connector and sentimentr-ui). The sentimentr-connector sub project builds the 'sentimentr-connector.jar' required in sentimentr-ui and also in your own application.
 
-The sentimentr-ui project uses the sentimentr-connector dependency like this in the maven pom.xml
+The sentimentr-ui project uses the sentimentr-connector dependency like this in the maven [pom.xml](/sentimentr-client/sentimentr-ui/pom.xml)
 
 		<dependency>
 			<groupId>pivotal.sentimentr</groupId>
@@ -119,6 +119,6 @@ The sentimentr-ui project uses the sentimentr-connector dependency like this in 
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-In order to send text to the sentimentr service and to receive the score in your own application add code like this
+In order to send text to the sentimentr service and to receive the score in your [own application](/sentimentr-client/sentimentr-ui/src/main/java/io/pivotal/fe/sentimentr/client/controller/SentimentrClientController.java) add code like this
 
 			return sentimentrFacade.getSentiment(text);
