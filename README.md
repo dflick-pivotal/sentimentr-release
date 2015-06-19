@@ -50,11 +50,11 @@ On your local machine:
 - Clone this project
 - Cd into the sentimentr-release folder
 - Target bosh lite with your bosh cli
-- Execute: ./scripts/make_lite_manifest.sh
+- Execute: [./scripts/make_lite_manifest.sh](/scripts/make_lite_manifest.sh)
 	- Generates the sentimentr-manifest.yml pointing to your director and fills in templates with [spiff](https://github.com/cloudfoundry-incubator/spiff/) 
-- Execute: ./scripts/add_sec_rule 
+- Execute: [./scripts/add_sec_rule.sh](/scripts/add_sec_rule.sh) 
 	- (required on bosh lite ==> configures a security group that allows the app to communicate with the service)
-- Execute: bosh upload release releases/sentimentr-release/sentimentr-release-8.yml
+- Execute: bosh upload release [releases/sentimentr-release/sentimentr-release-8.yml](/releases/sentimentr-release/sentimentr-release-8.yml)
 	- gets the sentimentr-release packages from remote blobstore and uploads the release.
 - Execute: bosh deploy
 	- deploys the sentimentr-release
