@@ -3,15 +3,15 @@ Project: Pivotal CF Natural Language Processing (NLP) Service Tile.
 
 Contents: Sentimentr service tile for Pivotal CF Ops Manager, bosh release, service, broker and exemplary client app. 
  
-Sentimentr service: 
+[sentimentr-service](/src/sentimentr-service): 
 - Provides a sentiment analysis service
 - Stanford [CoreNLP](http://nlp.stanford.edu/software/corenlp.shtml) library
 - Receives text and sends back the sentiment score
 - Spring Boot app
 
-Sentimentr service broker:
+[sentimentr-service-broker](/src/sentimentr-service-broker):
 - Based on [spring-boot-cf-service-broker](https://github.com/cloudfoundry-community/spring-boot-cf-service-broker)
-- Provides credentials for accessing the sentimentr service
+- Provides credentials for consuming the sentimentr-service
 - Provides a development and production plan (no difference :))
 - Spring Boot app
 
@@ -19,9 +19,9 @@ Sentimentr service broker:
 
 ![Alt text](/docs/app-manager.png?raw=true "app-manager")
 
-Exemplary client:
-- Consumes the sentimentr service
-- Sends text to the sentimentr service and presents the score received from sentimentr service
+[sentimentr-client](/sentimentr-client) - exemplary client:
+- Consumes sentimentr-service
+- Sends text to the sentimentr-service and presents the score received from sentimentr-service
 - Spring Boot app, spring cloud, bootstrap, angularjs
 
 ![Alt text](/docs/sentimentr-client.png?raw=true "sentimentr-client")
