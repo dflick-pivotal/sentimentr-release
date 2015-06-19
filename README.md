@@ -1,84 +1,83 @@
 # sentimentr-release
-Project: Pivotal cf natural language processing (nlp) service tile.
+Project: Pivotal CF Natural Language Processing (NLP) Service Tile.
 
-Contents: Sentimentr service tile for pivotal cf ops manager, bosh release, service, broker and exemplary client app. 
+Contents: Sentimentr service tile for Pivotal CF Ops Manager, bosh release, service, broker and exemplary client app. 
  
 Sentimentr service: 
-- provides a sentiment analysis service
+- Provides a sentiment analysis service
 - Stanford [CoreNLP](http://nlp.stanford.edu/software/corenlp.shtml) library
-- spring boot app
+- Spring Boot app
 
 Sentimentr service broker:
-- based on [spring-boot-cf-service-broker](https://github.com/cloudfoundry-community/spring-boot-cf-service-broker)
-- provides credentials for accessing the sentimentr service
-- provides a development and production plan (no difference :))
-- spring boot app
+- Based on [spring-boot-cf-service-broker](https://github.com/cloudfoundry-community/spring-boot-cf-service-broker)
+- Provides credentials for accessing the sentimentr service
+- Provides a development and production plan (no difference :))
+- Spring Boot app
 
 ![Alt text](/docs/ops-manager.png?raw=true "tile")
 
 ![Alt text](/docs/app-manager.png?raw=true "app-manager")
 
 Exemplary client:
-- consumes the sentimentr service
-- sends text to the sentimentr service and presents the score received from sentimentr service
-- spring boot app, spring cloud, bootstrap, angularjs
+- Consumes the sentimentr service
+- Sends text to the sentimentr service and presents the score received from sentimentr service
+- Spring Boot app, spring cloud, bootstrap, angularjs
 
 ![Alt text](/docs/sentimentr-client.png?raw=true "sentimentr-client")
 
-Options to run the apps:
-- all apps on local machine
-- all apps in elastic runtime
-- service and broker deployed via bosh/bosh release on AWS or bosh-lite and client app in elastic runtime 
-- service and broker deployed via Pivotal CF Ops Manager and client app in elastic runtime 
+Options to run the project:
+- All apps on local machine
+- All apps in elastic runtime
+- Service and broker deployed via bosh/bosh release on AWS or bosh-lite and client app in elastic runtime 
+- Service and broker deployed via Pivotal CF Ops Manager and client app in elastic runtime 
 
 # Quick start
 - The tile and client app is available on google drive.
-- import the sentimentr.pivotal file in ops manager.
-- configure the AZ and hit deploy.
-- create a sentimentr service instance (with app manager or cf cli).
-- edit the manifest.yml in the client folder and change the servicename to the one you have just created.
-- push the client app.
+- Import the sentimentr.pivotal file in ops manager.
+- Configure the AZ and hit deploy.
+- Create a sentimentr service instance (with app manager or cf cli).
+- Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
+- Push the client app.
 
 # Prerequisite for advanced work with bosh
-On the local machine:
+On your local machine:
 - [bosh cli](use: https://github.com/cloudfoundry-community/traveling-bosh)
 - [bosh-lite](https://github.com/cloudfoundry/bosh-lite) with cloud foundry installed 
 - [cf commandline](use: https://github.com/cloudfoundry/cli)
 - java jdk and maven
 
 # How you get started with bosh/bosh release
-- clone this project
-- cd into the sentimentr-release folder
-- target bosh lite with your bosh cli
-- execute: ./scripts/make_lite_manifest.sh
-	- generates the sentimentr-manifest.yml pointing to your director and filling in templates with [spiff](https://github.com/cloudfoundry-incubator/spiff/) 
-- execute: ./scripts/add_sec_rule 
+- Clone this project
+- Cd into the sentimentr-release folder
+- Target bosh lite with your bosh cli
+- Execute: ./scripts/make_lite_manifest.sh
+	- Generates the sentimentr-manifest.yml pointing to your director and fills in templates with [spiff](https://github.com/cloudfoundry-incubator/spiff/) 
+- Execute: ./scripts/add_sec_rule 
 	- (required on bosh lite ==> configures a security group that allows the app to communicate with the service)
-- execute: bosh upload release releases/sentimentr-release/sentimentr-release-8.yml
+- Execute: bosh upload release releases/sentimentr-release/sentimentr-release-8.yml
 	- gets the sentimentr-release packages from remote blobstore and uploads the release.
-- execute: bosh deploy
+- Execute: bosh deploy
 	- deploys the sentimentr-release
-- execute: bosh vms
+- Execute: bosh vms
 	- shows all bosh deployed job/vms inclusive the two sentimentr jobs 
-- execute: bosh run errand broker-registrar
+- Execute: bosh run errand broker-registrar
 	- registers the service broker with elastic runtime
-- execute: cf create-service  sentimentr development mysenti
+- Execute: cf create-service  sentimentr development mysenti
 	- creates a sentimentr service instance  
-- edit the manifest.yml in the client folder and change the servicename to the one you have just created.
-- execute: cf push
-- point your browser to the sentimentr-client route
+- Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
+- Execute: cf push
+- Point your browser to the sentimentr-client route
 
 #Extend the sentimentr-release
-- you can change the jobs, src, packages, templates and create for example a bosh developer sentimentr-release => upload and ==> deploy it like this
+- You can change the jobs, src, packages, templates and create for example a bosh developer sentimentr-release, upload and deploy it like this
 	- bosh -n create release --force && bosh -n upload release && bosh -n deploy
 - note: you need to have maven and a jdk on your machine 
 	
 #Extend the sentimentr-tile
 Once you finsihed working on your release, you can create a *.pivotal file containing your ops manager tile.
-
-- execute: bosh create release --with-tarball --force
-	- this creates a release manifest and a release tarball 
-- edit the sentimentr-tile.yml and change the relese file and version ==> on my machine with the dev release created - 8+dev.2
+- Execute: bosh create release --with-tarball --force
+	- this creates a developer release manifest and a developer release tarball 
+- edit the sentimentr-tile.yml and change the relese file and version ==> ex. on my machine '8+dev.2'
 releases:                                                 
   - name: sentimentr-release
     file: sentimentr-release-8.tgz
@@ -87,11 +86,12 @@ releases:
 product_version: 1.0.1.1                                     
 - name: sentimentr
   version: 1.0.1.0
-- execute: createTileWithDevRelease.sh
-- this creates a sentimentr.pivotal file 
-- before you import the file delete and aply changes in the ops manager first - the tile is not upgradable
+- Execute: createTileWithDevRelease.sh
+- This creates a sentimentr.pivotal file 
+- Before you import the file delete the sentimentr tile and hit apply changes in the ops manager
+	- The tile is not upgradable
 
-# How you use the service with your own application
+# How to consume the service in own java applications
 
 The sentimentr-client project contains two sub projects (sentimentr-connector and sentimentr-ui). The sentimentr-connector sub project builds the 'sentimentr-connector.jar' required in sentimentr-ui and also in your own application.
 
