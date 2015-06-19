@@ -119,4 +119,4 @@ The sentimentr-ui project uses the sentimentr-connector dependency like this in 
 
 In order to send text to the sentimentr service and to receive the score in your own application add code like this
 
-			return [sentimentrFacade.getSentiment(text);](/sentimentr-client/sentimentr-connector/src/main/java/io/pivotal/fe/sentimentr/client/facade/SentimentrFacade.java)
+			return sentimentrFacade.getSentiment(text);
