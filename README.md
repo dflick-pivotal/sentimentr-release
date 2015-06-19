@@ -32,7 +32,7 @@ Options to run the project:
 - Service and broker deployed via Pivotal CF Ops Manager and client app in elastic runtime 
 
 # Quick start
-- The tile and client app is available on google drive.
+- The tile and client app is available on [google drive](https://drive.google.com/open?id=0B-JMhN27hCC8b0JVUFlHc3F6VE0&authuser=0).
 - Import the sentimentr.pivotal file in ops manager.
 - Configure the AZ and hit deploy.
 - Create a sentimentr service instance (with app manager or cf cli).
