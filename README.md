@@ -35,13 +35,12 @@ Service binding options:
 - user provided service 
 
 # Quick start
-
 - The tile and client app is available on google drive.
- - import the sentimentr.pivotal file in ops manager.
- - configure the AZ and hit deploy.
- - create a sentimentr service instance (with app manager or cf cli).
- - edit the manifest.yml in the client folder and change the servicename to the one you have just created.
- - push the client app.
+- import the sentimentr.pivotal file in ops manager.
+- configure the AZ and hit deploy.
+- create a sentimentr service instance (with app manager or cf cli).
+- edit the manifest.yml in the client folder and change the servicename to the one you have just created.
+- push the client app.
 
 # Prerequisite for advanced work with bosh
 On the local machine:
@@ -56,7 +55,7 @@ On the local machine:
 - target bosh lite with your bosh cli
 - execute: ./scripts/make_lite_manifest.sh
 - execute: ./scripts/add_sec_rule 
-	- (required on bosh lite - configures a security group that allows the app to communicate with the service)
+	- (required on bosh lite ==> configures a security group that allows the app to communicate with the service)
 - execute 'bosh upload release releases/sentimentr-release/sentimentr-release-8.yml' ==> gets the sentimentr-release packages from remote blobstore and uploads the release.
 - execute 'bosh deploy'. ==> deploys the sentimentr-release
 - execute 'bosh vms' ==> shows all the vms and the two sentimentr jobs currently up and running 
