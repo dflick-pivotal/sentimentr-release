@@ -18,6 +18,8 @@ Exemplary client:
 - Sends text to the sentimentr service and presents the score received from Sentimentr service
 - spring boot app, spring cloud, bootstrap, angularjs
 
+![Alt text](/docs/sentimentr-client.png?raw=true "sentimentr-client")
+
 Possible execution:
 - All apps on local machine
 - All apps in elastic runtime
@@ -36,24 +38,31 @@ Service binding options:
  - Edit the manifest.yml in the client folder and change the servicename to the one you have just created.
  - Push the client app.
 
-# prerequisite for the more advanced stuff
+# Prerequisite for advanced work with bosh
 On the local machine:
-- bosh cli
-- cf commandline 
+- bosh cli (use: https://github.com/cloudfoundry-community/traveling-bosh)
+- bosh-lite wit cloud foundry installed (https://github.com/cloudfoundry/bosh-lite)
+- cf commandline (use: https://github.com/cloudfoundry/cli)
 - java jdk and maven
-
 
 # How you get started with the sentimentr tile or bosh release
 - clone the project
 - cd into the sentimentr-release folder
 - target bosh lite with your bosh cli
 - execute ./scripts/make_lite_manifest.sh
+- execute ./scripts/add_sec_rule (required on bosh lite - configures a security group that allows the app to communicate with the service - thanks Johannes)
+- execute 'bosh upload release releases/sentimentr-release/sentimentr-release-8.yml' ==> gets the sentimentr-release packages from a blobstore and uploads the release.
+- execute 'bosh deploy'.
+- execute 'bosh vms' ==> shows
+- execute 'bosh run errand broker-registrar' ==> registers the service broker
+- create service ==> 
+- push sentimentr-client ==> 
+
+extend the release
+- bosh -n create release --force && bosh -n upload release && bosh -n deploy
+
+# You changed the Release and would like to create a new tile
 - execute 'bosh create release --with-tarball'
-- 
-
-
-example bosh lite
-- 
 
 # How you use the service with your own application
 
