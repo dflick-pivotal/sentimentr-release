@@ -44,6 +44,7 @@ Options to run the project:
 On your local machine:
 - [bosh cli](https://github.com/cloudfoundry-community/traveling-bosh)
 - [bosh-lite](https://github.com/cloudfoundry/bosh-lite) with cloud foundry installed 
+- [spiff](https://github.com/cloudfoundry-incubator/spiff/)
 - [cf commandline](https://github.com/cloudfoundry/cli)
 - java jdk and maven
 
