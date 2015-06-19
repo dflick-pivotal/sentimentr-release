@@ -81,7 +81,26 @@ Once you finsihed working on your release, you can create a *.pivotal file conta
 - Edit the sentimentr-tile.yml (here is some [documentation](http://docs.pivotal.io/pivotalcf/packaging/))
 	- Change the release file and version ==> ex. on my machine '8+dev.2'
 
+name: Sentimentr                                    
+product_version: 1.0.1.1                                     
+metadata_version: "1.3"                                    
+target_installer_version: 1.3
+requires_product_versions:
+- name: cf
+  version: "~> 1.3"
+stemcell_criteria:
+  os: ubuntu-trusty
+  version: '2865.1'
+  requires_cpi: false
 releases:                                                 
+  - name: sentimentr-release
+    file: sentimentr-release-8.tgz
+    version: '8'
+provides_product_versions:
+- name: sentimentr
+  version: 1.0.1.0
+
+releases:   
   - name: sentimentr-release
     file: sentimentr-release-8.tgz
     version: '8'
