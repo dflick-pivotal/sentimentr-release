@@ -101,10 +101,10 @@ provides_product_versions:
 - name: sentimentr
   version: 1.0.1.0
 ```
-- Execute: createTileWithDevRelease.sh
+- Execute: [createTileWithDevRelease.sh](/createTileWithDevRelease.sh)
 	- This creates a sentimentr.pivotal file 
-- Before you import the file delete the sentimentr tile and hit apply changes in the ops manager
-	- The tile is not upgradable - the product version number needs to be different when ever you import tile.
+- Before you import the file delete the currently deployed sentimentr tile and hit apply changes in the ops manager
+	- The tile is not upgradable - the product version number needs to be different when ever you import a tile.
 
 # How to consume the service in own java applications
 The sentimentr-client project contains two sub projects (sentimentr-connector and sentimentr-ui). The sentimentr-connector sub project builds the 'sentimentr-connector.jar' required in sentimentr-ui and also in your own application.
@@ -119,4 +119,4 @@ The sentimentr-ui project uses the sentimentr-connector dependency like this in 
 
 In order to send text to the sentimentr service and to receive the score in your own application add code like this
 
-			return sentimentrFacade.getSentiment(text);
+			return [sentimentrFacade.getSentiment(text);](/sentimentr-client/sentimentr-connector/src/main/java/io/pivotal/fe/sentimentr/client/facade/SentimentrFacade.java)
