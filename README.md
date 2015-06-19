@@ -72,14 +72,15 @@ On your local machine:
 - You can extend and change the sentimentr-release (jobs, src, packages, templates, ...)
 - You could create a bosh developer sentimentr-release, upload and deploy it for example.
 	- bosh -n create release --force && bosh -n upload release && bosh -n deploy
-- note: you need to have maven and a jdk on your machine 
+- Note: you need to have maven and a jdk on your machine 
 	
 #Extend the sentimentr-tile
 Once you finsihed working on your release, you can create a *.pivotal file containing your ops manager tile.
 - Execute: bosh create release --with-tarball --force
 	- this creates a developer release manifest and a developer release tarball 
 - Edit the sentimentr-tile.yml (here is some [documentation](http://docs.pivotal.io/pivotalcf/packaging/))
-- Change the release file and version ==> ex. on my machine '8+dev.2'
+	- Change the release file and version ==> ex. on my machine '8+dev.2'
+
 releases:                                                 
   - name: sentimentr-release
     file: sentimentr-release-8.tgz
@@ -88,13 +89,13 @@ releases:
 product_version: 1.0.1.1                                     
 - name: sentimentr
   version: 1.0.1.0
-- After you changed the Execute: createTileWithDevRelease.sh
-- This creates a sentimentr.pivotal file 
+
+- Execute: createTileWithDevRelease.sh
+	- This creates a sentimentr.pivotal file 
 - Before you import the file delete the sentimentr tile and hit apply changes in the ops manager
-	- The tile is not upgradable
+	- The tile is not upgradable - the product version number needs to be different when ever you import tile.
 
 # How to consume the service in own java applications
-
 The sentimentr-client project contains two sub projects (sentimentr-connector and sentimentr-ui). The sentimentr-connector sub project builds the 'sentimentr-connector.jar' required in sentimentr-ui and also in your own application.
 
 The sentimentr-ui project uses the sentimentr-connector dependency like this in the maven pom.xml
