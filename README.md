@@ -6,7 +6,7 @@ Contents: Sentimentr service tile for Pivotal CF Ops Manager, bosh release, serv
 Sentimentr service: 
 - Provides a sentiment analysis service
 - Stanford [CoreNLP](http://nlp.stanford.edu/software/corenlp.shtml) library
-- receives text and sends back the sentiment score
+- Receives text and sends back the sentiment score
 - Spring Boot app
 
 Sentimentr service broker:
