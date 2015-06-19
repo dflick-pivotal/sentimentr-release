@@ -78,7 +78,7 @@ On your local machine:
 Once you finsihed working on your release, you can create a *.pivotal file containing your ops manager tile.
 - Execute: bosh create release --with-tarball --force
 	- this creates a developer release manifest and a developer release tarball 
-- Edit the sentimentr-tile.yml (here is some [documentation](http://docs.pivotal.io/pivotalcf/packaging/))
+- Edit the [sentimentr-tile.yml](/sentimentr-tile.yml) (here is some [documentation](http://docs.pivotal.io/pivotalcf/packaging/))
 	- Change the release file and version ==> ex. on my machine '8+dev.2'
 ```
 name: Sentimentr                                    
