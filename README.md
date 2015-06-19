@@ -5,7 +5,7 @@ Contents: Sentimentr service tile for pivotal cf ops manager, bosh release, serv
  
 Sentimentr service: 
 - provides a sentiment analysis service
-- Stanford CoreNLP library (http://nlp.stanford.edu/software/corenlp.shtml[CoreNLP])
+- Stanford link:http://nlp.stanford.edu/software/corenlp.shtml[CoreNLP] library
 - ** link:cities-service/src/main/java/com/example/cities/config/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
 
 - spring boot app
