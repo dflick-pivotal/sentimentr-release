@@ -69,7 +69,8 @@ On your local machine:
 - Point your browser to the sentimentr-client route
 
 #Extend the sentimentr-release
-- You can change the jobs, src, packages, templates and create for example a bosh developer sentimentr-release, upload and deploy it like this
+- You can extend and change the sentimentr-release (jobs, src, packages, templates, ...)
+- You could create a bosh developer sentimentr-release, upload and deploy it for example.
 	- bosh -n create release --force && bosh -n upload release && bosh -n deploy
 - note: you need to have maven and a jdk on your machine 
 	
@@ -77,7 +78,8 @@ On your local machine:
 Once you finsihed working on your release, you can create a *.pivotal file containing your ops manager tile.
 - Execute: bosh create release --with-tarball --force
 	- this creates a developer release manifest and a developer release tarball 
-- edit the sentimentr-tile.yml and change the relese file and version ==> ex. on my machine '8+dev.2'
+- Edit the sentimentr-tile.yml (here is some [documentation](http://docs.pivotal.io/pivotalcf/packaging/))
+- Change the release file and version ==> ex. on my machine '8+dev.2'
 releases:                                                 
   - name: sentimentr-release
     file: sentimentr-release-8.tgz
@@ -86,7 +88,7 @@ releases:
 product_version: 1.0.1.1                                     
 - name: sentimentr
   version: 1.0.1.0
-- Execute: createTileWithDevRelease.sh
+- After you changed the Execute: createTileWithDevRelease.sh
 - This creates a sentimentr.pivotal file 
 - Before you import the file delete the sentimentr tile and hit apply changes in the ops manager
 	- The tile is not upgradable
