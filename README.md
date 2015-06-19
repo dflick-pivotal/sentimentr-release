@@ -67,7 +67,7 @@ On your local machine:
 	- registers the service broker with elastic runtime
 - Execute: cf create-service  sentimentr development mysenti
 	- creates a sentimentr service instance  
-- Edit the manifest.yml in the sentimentr-client folder and change the servicename to the one you have just created.
+- Edit the [manifest.yml](/sentimentr-client/manifest.yml) in the sentimentr-client folder and change the servicename to the one you have just created.
 - Execute: cf push
 - Point your browser to the sentimentr-client route
 
