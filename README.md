@@ -13,9 +13,9 @@ Sentimentr service broker:
 - provides credentials for accessing the sentimentr service
 - spring boot app
 
-![Alt text](/docs/sentimentr-client.png?raw=true "sentimentr-client")
+![Alt text](/docs/ops-manager.png?raw=true "tile")
 
-![Alt text](/docs/sentimentr-service-broker.png?raw=true "sentimentr-service-broker")
+![Alt text](/docs/app-manager.png?raw=true "app-manager")
 
 Exemplary client:
 - Consumes the sentimentr service
