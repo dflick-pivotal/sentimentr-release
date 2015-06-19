@@ -12,7 +12,6 @@ public class SentimentrServiceInfoCreator extends
 		CloudFoundryServiceInfoCreator<SentimentrServiceInfo> {
 
 	public static final String SENTIMENTR_TAG = "sentimentr";
-	public static final String SENTIMENTR_USER_PROVIDED_NAME = "mysenti";
 
 	public SentimentrServiceInfoCreator() {
 		super(new Tags(), SENTIMENTR_TAG);
@@ -37,11 +36,6 @@ public class SentimentrServiceInfoCreator extends
 		boolean labelAcceptable = label != null
 				&& label.startsWith(SENTIMENTR_TAG);
 
-		// In the case of an user provided service
-		// cf create-user-provided-service mysenti -p '{ "uri": "http://10.244.5.2:8080/sentiment" }'
-		boolean nameAcceptable = name != null
-				&& name.startsWith(SENTIMENTR_USER_PROVIDED_NAME);
-		
-		return tagAcceptable || labelAcceptable || nameAcceptable;
+		return tagAcceptable || labelAcceptable;
 	}
 }
