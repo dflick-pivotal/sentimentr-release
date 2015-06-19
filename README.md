@@ -6,13 +6,12 @@ Contents: Sentimentr service tile for pivotal cf ops manager, bosh release, serv
 Sentimentr service: 
 - provides a sentiment analysis service
 - Stanford [CoreNLP](http://nlp.stanford.edu/software/corenlp.shtml) library
-- ** link:cities-service/src/main/java/com/example/cities/config/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
-
 - spring boot app
 
 Sentimentr service broker:
-- based on spring-boot-cf-service-broker (https://github.com/cloudfoundry-community/spring-boot-cf-service-broker)
+- based on [spring-boot-cf-service-broker](https://github.com/cloudfoundry-community/spring-boot-cf-service-broker)
 - provides credentials for accessing the sentimentr service
+- provides a development and production plan (no difference :))
 - spring boot app
 
 ![Alt text](/docs/ops-manager.png?raw=true "tile")
@@ -21,12 +20,12 @@ Sentimentr service broker:
 
 Exemplary client:
 - consumes the sentimentr service
-- sends text to the sentimentr service and presents the score received from Sentimentr service
+- sends text to the sentimentr service and presents the score received from sentimentr service
 - spring boot app, spring cloud, bootstrap, angularjs
 
 ![Alt text](/docs/sentimentr-client.png?raw=true "sentimentr-client")
 
-Possible execution:
+Options to run the apps:
 - all apps on local machine
 - all apps in elastic runtime
 - service and broker deployed via bosh/bosh release on AWS or bosh-lite and client app in elastic runtime 
@@ -42,16 +41,17 @@ Possible execution:
 
 # Prerequisite for advanced work with bosh
 On the local machine:
-- bosh cli (use: https://github.com/cloudfoundry-community/traveling-bosh)
-- bosh-lite wit cloud foundry installed (https://github.com/cloudfoundry/bosh-lite)
-- cf commandline (use: https://github.com/cloudfoundry/cli)
+- [bosh cli](use: https://github.com/cloudfoundry-community/traveling-bosh)
+- [bosh-lite](https://github.com/cloudfoundry/bosh-lite) with cloud foundry installed 
+- [cf commandline](use: https://github.com/cloudfoundry/cli)
 - java jdk and maven
 
-# How you get started with bosh
+# How you get started with bosh/bosh release
 - clone this project
 - cd into the sentimentr-release folder
 - target bosh lite with your bosh cli
 - execute: ./scripts/make_lite_manifest.sh
+	- generates the sentimentr-manifest.yml pointing to your director and filling in templates with [spiff](https://github.com/cloudfoundry-incubator/spiff/) 
 - execute: ./scripts/add_sec_rule 
 	- (required on bosh lite ==> configures a security group that allows the app to communicate with the service)
 - execute: bosh upload release releases/sentimentr-release/sentimentr-release-8.yml
@@ -68,11 +68,28 @@ On the local machine:
 - execute: cf push
 - point your browser to the sentimentr-client route
 
-extend the release
-- bosh -n create release --force && bosh -n upload release && bosh -n deploy
+#Extend the sentimentr-release
+- you can change the jobs, src, packages, templates and create for example a bosh developer sentimentr-release => upload and ==> deploy it like this
+	- bosh -n create release --force && bosh -n upload release && bosh -n deploy
+- note: you need to have maven and a jdk on your machine 
+	
+#Extend the sentimentr-tile
+Once you finsihed working on your release, you can create a *.pivotal file containing your ops manager tile.
 
-# You changed the Release and would like to create a new tile
-- execute 'bosh create release --with-tarball'
+- execute: bosh create release --with-tarball --force
+	- this creates a release manifest and a release tarball 
+- edit the sentimentr-tile.yml and change the relese file and version ==> on my machine with the dev release created - 8+dev.2
+releases:                                                 
+  - name: sentimentr-release
+    file: sentimentr-release-8.tgz
+    version: '8'
+- change the product version
+product_version: 1.0.1.1                                     
+- name: sentimentr
+  version: 1.0.1.0
+- execute: createTileWithDevRelease.sh
+- this creates a sentimentr.pivotal file 
+- before you import the file delete and aply changes in the ops manager first - the tile is not upgradable
 
 # How you use the service with your own application
 
