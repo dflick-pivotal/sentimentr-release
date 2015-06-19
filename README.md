@@ -82,7 +82,7 @@ Once you finsihed working on your release, you can create a *.pivotal file conta
 - Execute: bosh create release --with-tarball --force
 	- this creates a developer release manifest and a developer release tarball 
 - Edit the [sentimentr-tile.yml](/sentimentr-tile.yml) (here is some [documentation](http://docs.pivotal.io/pivotalcf/packaging/))
-	- Change the product_version, releases and provides_product_version properties ==> ex. on my machine i created a release with version '8+dev.2'. Just increment the product versions.
+	- Change the product_version, releases and provides_product_version properties ==> e.g. I created a release with version '8+dev.2' on my machine. Just increment the numbers for the product versions.
 ```
 name: Sentimentr                                    
 product_version: 1.0.1.1                                     
