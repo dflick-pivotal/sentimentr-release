@@ -41,9 +41,9 @@ Options to run the project:
 
 # Prerequisite for advanced work with bosh
 On your local machine:
-- [bosh cli](use: https://github.com/cloudfoundry-community/traveling-bosh)
+- [bosh cli](https://github.com/cloudfoundry-community/traveling-bosh)
 - [bosh-lite](https://github.com/cloudfoundry/bosh-lite) with cloud foundry installed 
-- [cf commandline](use: https://github.com/cloudfoundry/cli)
+- [cf commandline](https://github.com/cloudfoundry/cli)
 - java jdk and maven
 
 # How you get started with bosh/bosh release
