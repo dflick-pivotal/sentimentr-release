@@ -5,7 +5,9 @@ Contents: Sentimentr service tile for pivotal cf ops manager, bosh release, serv
  
 Sentimentr service: 
 - provides a sentiment analysis service
-- Stanford CoreNLP library (http://nlp.stanford.edu/software/corenlp.shtml)
+- Stanford CoreNLP library (http://nlp.stanford.edu/software/corenlp.shtml[CoreNLP])
+- ** link:cities-service/src/main/java/com/example/cities/config/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
+
 - spring boot app
 
 Sentimentr service broker:
@@ -30,10 +32,6 @@ Possible execution:
 - service and broker deployed via bosh/bosh release on AWS or bosh-lite and client app in elastic runtime 
 - service and broker deployed via Pivotal CF Ops Manager and client app in elastic runtime 
 
-Service binding options:
-- managed service
-- user provided service 
-
 # Quick start
 - The tile and client app is available on google drive.
 - import the sentimentr.pivotal file in ops manager.
@@ -49,28 +47,26 @@ On the local machine:
 - cf commandline (use: https://github.com/cloudfoundry/cli)
 - java jdk and maven
 
-# How you get started with the sentimentr tile or bosh release
+# How you get started with bosh
 - clone this project
 - cd into the sentimentr-release folder
 - target bosh lite with your bosh cli
 - execute: ./scripts/make_lite_manifest.sh
 - execute: ./scripts/add_sec_rule 
 	- (required on bosh lite ==> configures a security group that allows the app to communicate with the service)
-- execute 'bosh upload release releases/sentimentr-release/sentimentr-release-8.yml' ==> gets the sentimentr-release packages from remote blobstore and uploads the release.
-- execute 'bosh deploy'. ==> deploys the sentimentr-release
-- execute 'bosh vms' ==> shows all the vms and the two sentimentr jobs currently up and running 
-- execute 'bosh run errand broker-registrar' ==> registers the service broker with welastic runtime
-- create a sentimentr service instance ==> ex. 'cf create-service  sentimentr development mysenti' 
-- edit the manifest.yml in the client folder and change the servicename to the one you have just created.
-- execute 'cf push'
-- point your browser to the sentimentr-client route
-
-you can also consume the service by specifying a user provided service.
-- execute: cf cups mysenti -p '{ "uri": "http://10.244.5.2:8080/sentiment" }'
+- execute: bosh upload release releases/sentimentr-release/sentimentr-release-8.yml
+	- gets the sentimentr-release packages from remote blobstore and uploads the release.
+- execute: bosh deploy
+	- deploys the sentimentr-release
+- execute: bosh vms
+	- shows all bosh deployed job/vms inclusive the two sentimentr jobs 
+- execute: bosh run errand broker-registrar
+	- registers the service broker with elastic runtime
+- execute: cf create-service  sentimentr development mysenti
+	- creates a sentimentr service instance  
 - edit the manifest.yml in the client folder and change the servicename to the one you have just created.
 - execute: cf push
 - point your browser to the sentimentr-client route
-
 
 extend the release
 - bosh -n create release --force && bosh -n upload release && bosh -n deploy
