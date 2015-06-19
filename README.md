@@ -80,7 +80,7 @@ Once you finsihed working on your release, you can create a *.pivotal file conta
 	- this creates a developer release manifest and a developer release tarball 
 - Edit the sentimentr-tile.yml (here is some [documentation](http://docs.pivotal.io/pivotalcf/packaging/))
 	- Change the release file and version ==> ex. on my machine '8+dev.2'
-
+```
 name: Sentimentr                                    
 product_version: 1.0.1.1                                     
 metadata_version: "1.3"                                    
@@ -99,16 +99,7 @@ releases:
 provides_product_versions:
 - name: sentimentr
   version: 1.0.1.0
-
-releases:   
-  - name: sentimentr-release
-    file: sentimentr-release-8.tgz
-    version: '8'
-- change the product version
-product_version: 1.0.1.1                                     
-- name: sentimentr
-  version: 1.0.1.0
-
+```
 - Execute: createTileWithDevRelease.sh
 	- This creates a sentimentr.pivotal file 
 - Before you import the file delete the sentimentr tile and hit apply changes in the ops manager
