@@ -73,8 +73,8 @@ On your local machine:
 
 #Extend the sentimentr-release
 - You can extend and change the sentimentr-release (jobs, src, packages, templates, ...)
-- You could create a bosh developer sentimentr-release, upload and deploy it for example.
-	- bosh -n create release --force && bosh -n upload release && bosh -n deploy
+	- You could create your own bosh developer sentimentr-release, upload and deploy it for example.
+		- bosh -n create release --force && bosh -n upload release && bosh -n deploy
 - Note: you need to have maven and a jdk on your machine 
 	
 #Extend the sentimentr-tile
