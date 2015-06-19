@@ -104,7 +104,7 @@ provides_product_versions:
   version: 1.0.1.0
 ```
 - Execute: [createTileWithDevRelease.sh](/createTileWithDevRelease.sh)
-	- This creates a sentimentr.pivotal file 
+	- This creates a sentimentr.pivotal file in the sentimentr-release folder
 - Before you import the file delete the currently deployed sentimentr tile and hit apply changes in the ops manager
 	- The tile is not upgradable - the product version number needs to be different when ever you import a tile.
 
