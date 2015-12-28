@@ -1,13 +1,13 @@
-package org.cloudfoundry.community.servicebroker.sentimentr.config;
+package io.pivotal.fe.sentimentr.broker.config;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.cloudfoundry.community.servicebroker.model.Catalog;
-import org.cloudfoundry.community.servicebroker.model.Plan;
-import org.cloudfoundry.community.servicebroker.model.ServiceDefinition;
+import org.springframework.cloud.servicebroker.model.Catalog;
+import org.springframework.cloud.servicebroker.model.ServiceDefinition;
+import org.springframework.cloud.servicebroker.model.Plan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

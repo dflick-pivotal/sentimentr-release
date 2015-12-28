@@ -1,4 +1,4 @@
-package org.cloudfoundry.community.servicebroker.sentimentr.config;
+package io.pivotal.fe.sentimentr.broker.config;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;

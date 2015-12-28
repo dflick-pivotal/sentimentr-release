@@ -5,5 +5,6 @@ applications:
   instances: 1
   path: build/libs/sentimentr-service-broker.war
   env:
-    sentimentr_uri: sentimentr.emea.fe.gopivotal.com
+    sentimentr_uri: sentimentr.bosh-lite.com
+#    sentimentr_uri: sentimentr.emea.fe.gopivotal.com
 #    sentimentr_uri: sentimentr.10.244.0.34.xip.io

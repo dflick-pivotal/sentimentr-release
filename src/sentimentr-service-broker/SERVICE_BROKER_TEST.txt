@@ -12,6 +12,8 @@ Get Catalog
 
 curl -H "X-Broker-API-Version: 2.4" http://user:password@localhost:8080/v2/catalog
 
+curl -H "X-Broker-API-Version: 2.4" http://user:password@http://sentimentr-broker.bosh-lite.com/v2/catalog
+
 ==>
 {
 "services":[
