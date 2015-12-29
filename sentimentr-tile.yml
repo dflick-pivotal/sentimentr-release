@@ -21,7 +21,7 @@ pre_delete_errands:
 job_types:
 - name: sentimentr
   resource_label: Sentimentr
-  job_templates:
+  templates:
     - sentimentr
   release: sentimentr-release
   max_in_flight: 1
@@ -70,7 +70,7 @@ job_types:
 
 - name: sentimentr-service-broker
   resource_label: Broker
-  job_templates:
+  templates:
     - sentimentr-service-broker
   release: sentimentr-release
   max_in_flight: 1
