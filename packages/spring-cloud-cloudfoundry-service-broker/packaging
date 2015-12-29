@@ -1,0 +1,10 @@
+# abort script on any command that exits with a non zero value
+set -e -x
+
+JAVA_VERSION=jdk1.8.0_45
+JAVA_TARBALL=jdk-8u45-linux-x64.gz
+
+tar zxf java/${JAVA_TARBALL}
+export JAVA_HOME=${BOSH_COMPILE_TARGET}/${JAVA_VERSION}
+
+cp -a ${BOSH_COMPILE_TARGET}/spring-cloud-cloudfoundry-service-broker-1.0.0.BUILD-SNAPSHOT.jar ${BOSH_INSTALL_TARGET}/spring-cloud-cloudfoundry-service-broker-1.0.0.BUILD-SNAPSHOT.jar

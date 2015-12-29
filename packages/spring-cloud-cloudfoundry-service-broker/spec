@@ -1,0 +1,6 @@
+---
+name: spring-cloud-cloudfoundry-service-broker
+
+files:
+- java/*
+- spring-cloud-cloudfoundry-service-broker/**/*
