@@ -22,8 +22,8 @@ job_types:
 - name: sentimentr
   resource_label: Sentimentr
   templates:
-    - sentimentr
-  release: sentimentr-release
+    - name: sentimentr
+    - release: sentimentr-release
   max_in_flight: 1
   resource_definitions:
   - name: ram
