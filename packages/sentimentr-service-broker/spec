@@ -3,4 +3,5 @@ name: sentimentr-service-broker
 
 files:
 - java/*
+- spring-cloud-cloudfoundry-service-broker/**/*
 - sentimentr-service-broker/**/*
