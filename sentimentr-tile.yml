@@ -23,7 +23,8 @@ job_types:
   resource_label: Sentimentr
   templates:
     - name: sentimentr
-    - release: sentimentr-release
+      release: sentimentr-release
+  release: sentimentr-release
   max_in_flight: 1
   resource_definitions:
   - name: ram
@@ -71,7 +72,8 @@ job_types:
 - name: sentimentr-service-broker
   resource_label: Broker
   templates:
-    - sentimentr-service-broker
+    - name: sentimentr-service-broker
+      release: sentimentr-release
   release: sentimentr-release
   max_in_flight: 1
   resource_definitions:
@@ -136,7 +138,9 @@ job_types:
 
 - name: broker-registrar
   resource_label: Register broker
-  template: broker-registrar
+  templates: 
+    - name: broker-registrar
+      release: sentimentr-release
   release: sentimentr-release
   errand: true
   resource_definitions:
@@ -185,7 +189,9 @@ job_types:
 
 - name: broker-deregistrar
   resource_label: De-register broker
-  template: broker-deregistrar
+  templates: 
+    - name: broker-deregistrar
+      release: sentimentr-release
   release: sentimentr-release
   errand: true
   resource_definitions:
@@ -258,10 +264,3 @@ job_types:
     - name: instances
       type: integer
       default: 1
-
-update:
-  canaries: 1
-  canary_watch_time: 60000-240000
-  max_in_flight: 1
-  update_watch_time: 60000-240000
-
