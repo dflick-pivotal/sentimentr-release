@@ -1,4 +1,4 @@
-# sentimentr-release
+# sentimentr-release (PCF 1.5 compatible - see branch sentimentr-release-new for PCF 1.6 compatibility)
 Project: Pivotal CF Natural Language Processing (NLP) Service Tile.
 
 Contents: Sentimentr service tile for Pivotal CF Ops Manager, bosh release, service, broker and exemplary client app. 
