@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # sentimentr-release 
 Project: Pivotal CF Natural Language Processing (NLP) Service Tile.
 
