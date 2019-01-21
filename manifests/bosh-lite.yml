@@ -96,5 +96,7 @@ properties:
   cf:
     admin_password: "admin"
     admin_username: "admin"
-    api_url: "http://api.10.244.0.34.xip.io"
+    api_url: "https://api.bosh-lite.com"
+    skip_ssl_validation: true
+
     

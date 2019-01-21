@@ -1,0 +1,30 @@
+Sentimentr 
+==========
+git clone https://github.com/dflick-pivotal/sentimentr-release.git
+git branch sentimentr-release-new
+
+cd ../sentimentr-release/src/sentimentr-service-broker
+edit manifest.yml 
+...
+  env:
+    sentimentr_uri: sentimentr.bosh-lite.com
+...
+
+cf push
+cf create-service-broker sentimentr user password http://sentimentr-broker.bosh-lite.com
+
+==> demo from here
+cf marketplace
+cf enable-service-access sentimentr -o pivotal
+cf marketplace
+
+cf create-service sentimentr development mysenti
+cd .../sentimentr-release/sentimentr-client
+cf push
+
+cf delete sentimentr-client -r -f 
+cf delete-service mysenti -f 
+cf purge-service-offering sentimentr -f
+cf delete-service-broker sentimentr -f 
+cf delete sentimentr-broker -f 
+cf delete-orphaned-routes -f

@@ -16,6 +16,8 @@ blobs
 src/sentimentr-service/target/*
 src/sentimentr-service-broker/build/*
 src/sentimentr-service-broker/bin/*
+src/spring-cloud-cloudfoundry-service-broker/build/*
+src/spring-cloud-cloudfoundry-service-broker/bin/*
 latest.tgz
 .classpath
 .project

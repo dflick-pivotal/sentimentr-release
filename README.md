@@ -1,4 +1,5 @@
-# sentimentr-release (PCF 1.5 compatible - see branch sentimentr-release-new for PCF 1.6 compatibility)
+<<<<<<< HEAD
+# sentimentr-release 
 Project: Pivotal CF Natural Language Processing (NLP) Service Tile.
 
 Contents: Sentimentr service tile for Pivotal CF Ops Manager, bosh release, service, broker and exemplary client app. 
@@ -10,7 +11,7 @@ Contents: Sentimentr service tile for Pivotal CF Ops Manager, bosh release, serv
 - Spring Boot app
 
 [sentimentr-service-broker](/src/sentimentr-service-broker):
-- Based on [spring-boot-cf-service-broker](https://github.com/cloudfoundry-community/spring-boot-cf-service-broker)
+- (this changed) Based on [spring-cloud-cloudfoundry-service-broker](https://github.com/spring-cloud/spring-cloud-cloudfoundry-service-broker). spring-cloud-cloudfoundry-service-broker needs to be compiled localy (not available on maven repo right now)  
 - Provides credentials for consuming the sentimentr-service
 - Provides a development and production plan (no difference :))
 - Spring Boot app
@@ -57,7 +58,7 @@ On your local machine:
 	- Generates the sentimentr-manifest.yml pointing to your director and fills in templates with [spiff](https://github.com/cloudfoundry-incubator/spiff/) 
 - Execute: [./scripts/add_sec_rule](/scripts/add_sec_rule) 
 	- (required on bosh lite ==> configures a security group that allows the app to communicate with the service)
-- Execute: bosh upload release [releases/sentimentr-release/sentimentr-release-8.yml](/releases/sentimentr-release/sentimentr-release-8.yml)
+- Execute: bosh upload release [releases/sentimentr-release/sentimentr-release-9.yml](/releases/sentimentr-release/sentimentr-release-9.yml)
 	- gets the sentimentr-release packages from remote blobstore and uploads the release.
 - Execute: bosh deploy
 	- deploys the sentimentr-release
@@ -84,24 +85,21 @@ Once you finsihed working on your release, you can create a *.pivotal file conta
 - Edit the [sentimentr-tile.yml](/sentimentr-tile.yml) (here is some [documentation](http://docs.pivotal.io/pivotalcf/packaging/))
 	- Change the product_version, releases and provides_product_version properties ==> e.g. I created a release with version '8+dev.2' on my machine. Just increment the numbers for the product versions.
 ```
+---
 name: Sentimentr                                    
-product_version: 1.0.1.1                                     
-metadata_version: "1.3"                                    
-target_installer_version: 1.3
-requires_product_versions:
-- name: cf
-  version: "~> 1.3"
+product_version: 1.0.0.0                                     
+metadata_version: "1.6"
+label: 'Sentimentr: Example PCF Product Tile'
+description: Sentimentr is a sentiment analysis service    
+rank: 1   
 stemcell_criteria:
   os: ubuntu-trusty
-  version: '2865.1'
   requires_cpi: false
+  version: "3146"
 releases:                                                 
   - name: sentimentr-release
-    file: sentimentr-release-8.tgz
-    version: '8'
-provides_product_versions:
-- name: sentimentr
-  version: 1.0.1.0
+    file: sentimentr-release-9.tgz
+    version: '9'
 ```
 - Execute: [createTileWithDevRelease.sh](/createTileWithDevRelease.sh)
 	- This creates a sentimentr.pivotal file in the sentimentr-release folder
